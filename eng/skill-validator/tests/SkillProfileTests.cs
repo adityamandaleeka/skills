@@ -112,7 +112,8 @@ public class AnalyzeSkillTests
             "```",
             // Pad to ~1500 tokens (6000 chars)
             string.Concat(Enumerable.Repeat("Detailed explanation. ", 250)));
-        var profile = SkillProfiler.AnalyzeSkill(MakeSkill(content));
+        var profile = SkillProfiler.AnalyzeSkill(MakeSkill(content,
+            description: "Diagnose and fix MSBuild build failures using binary logs. Do not use for runtime errors."));
         Assert.Equal("detailed", profile.ComplexityTier);
         Assert.Empty(profile.Warnings);
     }
@@ -429,7 +430,8 @@ public class FormatDiagnosisHintsTests
             "1. Step",
             "```bash\necho\n```",
             new string('x', 4000));
-        var profile = SkillProfiler.AnalyzeSkill(MakeSkill(content));
+        var profile = SkillProfiler.AnalyzeSkill(MakeSkill(content,
+            "Diagnose and fix MSBuild build failures using binary logs. Do not use for runtime errors."));
         Assert.Empty(SkillProfiler.FormatDiagnosisHints(profile));
     }
 

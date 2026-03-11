@@ -233,6 +233,33 @@ This is grounded in [SkillsBench](https://arxiv.org/abs/2602.12670) findings (84
 
 When a skill fails validation, the profile warnings appear in the diagnosis to suggest what to fix.
 
+### Frontmatter description heuristics
+
+The profiler also checks the skill's frontmatter `description` for routing precision:
+
+- **Description length** — Too short (<50 chars) risks vague routing; too long (>500 chars) may confuse routing
+- **Action verbs** — Descriptions should specify what actions trigger the skill (diagnose, create, migrate, optimize)
+- **Negative scope** — Descriptions should include "Do not use for..." exclusions to prevent false-positive loading
+- **Specificity signals** — Domain-specific terms (error codes like `MSB4019`, tool names like `MSBuild`, file extensions like `.binlog`) improve routing precision
+
+## Cross-skill uniqueness analysis
+
+When multiple skills are discovered, skill-validator analyzes all pairs of skill descriptions for routing overlap. This catches cases where two skills would both load for the same prompt when only one is needed.
+
+**Phase 1 — Discriminative prompt generation:** An LLM examines each pair of descriptions and scores distinctness (1-5). For high-overlap pairs (≤2), it generates concrete user prompts that would ambiguously trigger both skills.
+
+**Phase 2 — Co-activation testing:** For high-overlap pairs, the generated prompts are automatically run through real agent sessions via the Copilot SDK. Each prompt is tested with each skill individually to confirm whether both actually activate — ground truth, not simulation.
+
+```
+⚠  Frontmatter uniqueness issues (1):
+   ⚠  Confirmed co-activation: "build-perf-baseline" and "build-perf-diagnostics"
+      both activated on 3/3 test prompt(s)
+     ⚠ "my dotnet build is really slow" → A:✓ B:✓
+     ⚠ "help me diagnose our slow .NET build" → A:✓ B:✓
+```
+
+The fix is typically to add "Do not use for..." clauses that reference the sibling skill's domain.
+
 ## Metrics & scoring
 
 The improvement score is a weighted sum. Quality is heavily prioritized — a skill that improves output quality will pass even if it uses more tokens:

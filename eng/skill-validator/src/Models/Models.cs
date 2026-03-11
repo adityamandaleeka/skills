@@ -306,6 +306,35 @@ public sealed record OverfittingJudgeOptions(
     int Timeout,
     string WorkDir);
 
+// --- Frontmatter uniqueness ---
+
+public sealed record DiscriminativePrompt(
+    string Prompt,
+    string Reasoning);
+
+public sealed record CoActivationResult(
+    string Prompt,
+    string SkillA,
+    string SkillB,
+    bool SkillAActivated,
+    bool SkillBActivated,
+    bool BothActivated);
+
+public sealed record UniquenessScore(
+    string SkillA,
+    string SkillB,
+    string DescriptionA,
+    string DescriptionB,
+    int Distinctness,     // 1-5 scale (1 = nearly identical, 5 = completely distinct)
+    string Reasoning,
+    string? SuggestedFix,
+    IReadOnlyList<DiscriminativePrompt>? DiscriminativePrompts = null,
+    IReadOnlyList<CoActivationResult>? CoActivationResults = null);
+
+public sealed record FrontmatterUniquenessResult(
+    IReadOnlyList<UniquenessScore> PairScores,
+    IReadOnlyList<string> Warnings);
+
 // --- Config ---
 
 public sealed record ReporterSpec(ReporterType Type);

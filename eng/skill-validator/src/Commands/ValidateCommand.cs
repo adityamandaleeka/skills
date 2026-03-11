@@ -292,6 +292,25 @@ public static class ValidateCommand
             Console.Error.WriteLine();
         }
 
+        // Cross-skill frontmatter uniqueness analysis
+        if (allSkills.Count > 1)
+        {
+            Console.WriteLine("\n🔍 Analyzing frontmatter uniqueness across skills...");
+            try
+            {
+                var uniquenessResult = await FrontmatterUniquenessAnalyzer.Analyze(
+                    allSkills,
+                    new FrontmatterUniquenessOptions(config.JudgeModel, config.Verbose, config.JudgeTimeout,
+                        Path.GetTempPath(), RunCoActivation: true));
+
+                UniquenessCommand.ReportUniqueness(uniquenessResult, config.Verbose);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"\x1b[33m⚠️  Frontmatter uniqueness analysis failed: {ex.Message}\x1b[0m");
+            }
+        }
+
         await AgentRunner.StopSharedClient();
         await AgentRunner.CleanupWorkDirs();
 

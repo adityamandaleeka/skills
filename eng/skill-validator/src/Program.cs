@@ -3,6 +3,7 @@ using SkillValidator.Commands;
 
 var rootCommand = ValidateCommand.Create();
 rootCommand.Add(ConsolidateCommand.Create());
+rootCommand.Add(UniquenessCommand.Create());
 
 var parseResult = rootCommand.Parse(args);
 return await parseResult.InvokeAsync();

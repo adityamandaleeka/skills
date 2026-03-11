@@ -17,6 +17,10 @@ public sealed record SkillProfile(
     bool HasWhenToUse,
     bool HasWhenNotToUse,
     int ResourceFileCount,
+    int DescriptionLength,
+    bool HasNegativeScope,
+    bool HasActionVerbs,
+    bool HasSpecificitySignals,
     IReadOnlyList<string> Errors,
     IReadOnlyList<string> Warnings);
 
@@ -68,6 +72,14 @@ public static partial class SkillProfiler
             .Sum(s => s.Setup?.Files?.Count ?? 0) ?? 0;
 
         var errors = new List<string>();
+
+        // Frontmatter description analysis
+        var description = skill.Description;
+        int descriptionLength = description.Length;
+        bool hasNegativeScope = NegativeScopeRegex().IsMatch(description);
+        bool hasActionVerbs = ActionVerbRegex().IsMatch(description);
+        bool hasSpecificitySignals = SpecificitySignalRegex().IsMatch(description);
+
         var warnings = new List<string>();
 
         // --- agentskills.io spec: name validation ---
@@ -185,6 +197,24 @@ public static partial class SkillProfiler
             }
         }
 
+        // Description-specific warnings
+        if (hasFrontmatter && descriptionLength > 0)
+        {
+            if (descriptionLength < 50)
+                warnings.Add($"Description is only {descriptionLength} chars — too vague to scope skill loading precisely.");
+            else if (descriptionLength > 500 && descriptionLength <= MaxDescriptionLength)
+                warnings.Add($"Description is {descriptionLength} chars — consider trimming to avoid confusing skill routing.");
+
+            if (!hasActionVerbs)
+                warnings.Add("Description lacks action verbs (e.g., diagnose, create, migrate, optimize) — routing works better when the description specifies what actions trigger the skill.");
+
+            if (!hasNegativeScope)
+                warnings.Add("Description has no negative scope (e.g., \"Do not use for...\") — exclusions help prevent false-positive skill loading.");
+
+            if (!hasSpecificitySignals)
+                warnings.Add("Description lacks specificity signals (error codes, tool names, file extensions, protocols) — domain-specific terms improve routing precision.");
+        }
+
         return new SkillProfile(
             Name: skill.Name,
             Chars4TokenCount: chars4TokenCount,
@@ -198,6 +228,10 @@ public static partial class SkillProfiler
             HasWhenToUse: hasWhenToUse,
             HasWhenNotToUse: hasWhenNotToUse,
             ResourceFileCount: resourceFileCount,
+            DescriptionLength: descriptionLength,
+            HasNegativeScope: hasNegativeScope,
+            HasActionVerbs: hasActionVerbs,
+            HasSpecificitySignals: hasSpecificitySignals,
             Errors: errors,
             Warnings: warnings);
     }
@@ -295,4 +329,15 @@ public static partial class SkillProfiler
 
     [GeneratedRegex(@"\]\(([^)]+)\)")]
     private static partial Regex FileRefRegex();
+
+    // Description-level heuristics
+
+    [GeneratedRegex(@"\b(do\s+not\s+use|don'?t\s+use|not\s+for|not\s+intended\s+for|not\s+applicable|exclude|avoid\s+using)\b", RegexOptions.IgnoreCase)]
+    private static partial Regex NegativeScopeRegex();
+
+    [GeneratedRegex(@"\b(diagnos|creat|generat|migrat|optimiz|analyz|debug|fix|build|deploy|test|configur|implement|refactor|convert|resolv|detect|establish|monitor|review|set\s+up|wrap)\w*\b", RegexOptions.IgnoreCase)]
+    private static partial Regex ActionVerbRegex();
+
+    [GeneratedRegex(@"(\b(error\s+[A-Z]{1,5}\d{3,6}|MSB\d{4}|CS\d{4}|NETSDK\d{4}|NU\d{4}|RS\d{4}|AD\d{4})\b|\.(?:cs|csproj|sln|props|targets|binlog|json|yaml|xml|dockerfile)\b|\b(?:P/Invoke|LibraryImport|MSBuild|NuGet|Roslyn|Kestrel|gRPC|SignalR|Blazor|MCP|Docker|Azure|stdout|stderr|stdio)\b)", RegexOptions.IgnoreCase)]
+    private static partial Regex SpecificitySignalRegex();
 }
