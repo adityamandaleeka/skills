@@ -60,51 +60,10 @@ stimuli:
       on Assert.AreEqual calls. My tests compare objects. How do I fix this?
     environment:
       files:
-        - dest: TestProject.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="MSTest" Version="3.8.0" />
-              </ItemGroup>
-            </Project>
-        - dest: ComparisonTests.cs
-          content: |
-            using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-            namespace MyApp.Tests;
-
-            [TestClass]
-            public class ComparisonTests
-            {
-                [TestMethod]
-                public void CompareObjects_AreEqual()
-                {
-                    object expected = GetExpected();
-                    object actual = GetActual();
-                    Assert.AreEqual(expected, actual);
-                }
-
-                [TestMethod]
-                public void CompareObjects_AreNotEqual()
-                {
-                    object a = "hello";
-                    object b = "world";
-                    Assert.AreNotEqual(a, b);
-                }
-
-                [TestMethod]
-                public void CompareReferences_AreSame()
-                {
-                    object obj = new object();
-                    Assert.AreSame(obj, obj);
-                }
-
-                private static object GetExpected() => 42;
-                private static object GetActual() => 42;
-            }
+        - src: ./fixtures/fix-assert-areequal-object-overload-errors-after-v3-upgrade/TestProject.csproj
+          dest: TestProject.csproj
+        - src: ./fixtures/fix-assert-areequal-object-overload-errors-after-v3-upgrade/ComparisonTests.cs
+          dest: ComparisonTests.cs
     graders:
       - type: output_matches
         config:
@@ -122,33 +81,10 @@ stimuli:
       After upgrading to MSTest v3, it seems to be ignored. How do I migrate?
     environment:
       files:
-        - dest: TestProject.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="MSTest" Version="3.8.0" />
-              </ItemGroup>
-            </Project>
-        - dest: local.testsettings
-          content: |
-            <?xml version="1.0" encoding="UTF-8"?>
-            <TestSettings name="Local">
-              <Execution>
-                <TestTypeSpecific>
-                  <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
-                    <AssemblyResolution>
-                      <TestDirectory useLoadContext="true" />
-                    </AssemblyResolution>
-                  </UnitTestRunConfig>
-                </TestTypeSpecific>
-              </Execution>
-              <Properties>
-                <Property name="TestTimeout" value="30000" />
-              </Properties>
-            </TestSettings>
+        - src: ./fixtures/migrate-from-testsettings-to-runsettings/TestProject.csproj
+          dest: TestProject.csproj
+        - src: ./fixtures/migrate-from-testsettings-to-runsettings/local.testsettings
+          dest: local.testsettings
     graders:
       - type: output_matches
         config:
@@ -170,42 +106,10 @@ stimuli:
       type conversions. What changed and how do I fix it?
     environment:
       files:
-        - dest: TestProject.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="MSTest" Version="3.8.0" />
-              </ItemGroup>
-            </Project>
-        - dest: DataDrivenTests.cs
-          content: |
-            using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-            namespace MyApp.Tests;
-
-            [TestClass]
-            public class DataDrivenTests
-            {
-                [TestMethod]
-                [DataRow(1L, "Alice", true)]
-                [DataRow(2L, "Bob", false)]
-                public void ProcessUser(int id, string name, bool active)
-                {
-                    Assert.IsNotNull(name);
-                }
-
-                [TestMethod]
-                [DataRow(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17)]
-                public void ManyParameters(int a, int b, int c, int d, int e, int f,
-                    int g, int h, int i, int j, int k, int l, int m, int n, int o,
-                    int p, int q)
-                {
-                    Assert.IsTrue(true);
-                }
-            }
+        - src: ./fixtures/fix-datarow-type-mismatch-errors-after-v3-upgrade/TestProject.csproj
+          dest: TestProject.csproj
+        - src: ./fixtures/fix-datarow-type-mismatch-errors-after-v3-upgrade/DataDrivenTests.cs
+          dest: DataDrivenTests.cs
     graders:
       - type: output_matches
         config:
@@ -224,19 +128,8 @@ stimuli:
       project file should look like.
     environment:
       files:
-        - dest: TestProject.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
-                <IsPackable>false</IsPackable>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
-                <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
-                <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
-              </ItemGroup>
-            </Project>
+        - src: ./fixtures/migrate-to-mstest-sdk-project-style/TestProject.csproj
+          dest: TestProject.csproj
         - src: fixtures/v2-nuget/UserServiceTests.cs
           dest: UserServiceTests.cs
     graders:
@@ -256,19 +149,8 @@ stimuli:
       Will there be any framework compatibility issues?
     environment:
       files:
-        - dest: TestProject.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net5.0</TargetFramework>
-                <IsPackable>false</IsPackable>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
-                <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
-                <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
-              </ItemGroup>
-            </Project>
+        - src: ./fixtures/handle-dropped-target-framework-during-v3-migration/TestProject.csproj
+          dest: TestProject.csproj
     graders:
       - type: output_matches
         config:

@@ -8,46 +8,8 @@ stimuli:
     prompt: Check this template.json for any issues. It's at .template.config/template.json
     environment:
       files:
-        - dest: .template.config/template.json
-          content: |
-            {
-              "author": "Test Author",
-              "classifications": ["Library"],
-              "name": "My Library Template",
-              "shortName": "restore",
-              "symbols": {
-                "targetFramework": {
-                  "type": "parameter",
-                  "datatype": "choice",
-                  "defaultValue": "net7.0",
-                  "choices": {
-                    "net8.0": { "description": ".NET 8" },
-                    "net9.0": { "description": ".NET 9" }
-                  }
-                },
-                "enableLogging": {
-                  "type": "parameter",
-                  "datatype": "bool",
-                  "defaultValue": "yes"
-                },
-                "maxRetries": {
-                  "type": "parameter",
-                  "datatype": "int",
-                  "defaultValue": "abc"
-                },
-                "computed1": {
-                  "type": "computed"
-                },
-                "generated1": {
-                  "type": "generated"
-                }
-              },
-              "postActions": [
-                {
-                  "description": "Restore packages"
-                }
-              ]
-            }
+        - src: ./fixtures/validate-template-with-multiple-errors/.template.config/template.json
+          dest: .template.config/template.json
     graders:
       - type: exit_success
       - type: output_contains
@@ -92,32 +54,8 @@ stimuli:
     prompt: Review the template at .template.config/template.json and tell me if it's ready to publish to NuGet.
     environment:
       files:
-        - dest: .template.config/template.json
-          content: |
-            {
-              "identity": "MyCompany.WebApi.CSharp",
-              "name": "My Web API Template",
-              "shortName": "mywebapi",
-              "sourceName": "MyWebApi",
-              "author": "My Company",
-              "classifications": ["Web", "API"],
-              "tags": {
-                "language": "C#",
-                "type": "project"
-              },
-              "symbols": {
-                "Framework": {
-                  "type": "parameter",
-                  "datatype": "choice",
-                  "defaultValue": "net9.0",
-                  "description": "Target framework",
-                  "choices": {
-                    "net8.0": { "description": ".NET 8" },
-                    "net9.0": { "description": ".NET 9" }
-                  }
-                }
-              }
-            }
+        - src: ./fixtures/validate-correct-template-and-suggest-improvements/.template.config/template.json
+          dest: .template.config/template.json
     graders:
       - type: exit_success
       - type: output_matches

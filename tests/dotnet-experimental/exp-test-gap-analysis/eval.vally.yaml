@@ -116,23 +116,8 @@ stimuli:
       Can you write a complete MSTest test suite for me?
     environment:
       files:
-        - dest: ShoppingCart.cs
-          content: |
-            namespace Commerce;
-
-            public sealed class ShoppingCart
-            {
-                private readonly List<(string Sku, decimal Price, int Qty)> _items = new();
-
-                public void AddItem(string sku, decimal price, int qty) =>
-                    _items.Add((sku, price, qty));
-
-                public bool RemoveItem(string sku) =>
-                    _items.RemoveAll(i => i.Sku == sku) > 0;
-
-                public decimal GetTotal() =>
-                    _items.Sum(i => i.Price * i.Qty);
-            }
+        - src: ./fixtures/decline-request-to-write-new-tests-from-scratch/ShoppingCart.cs
+          dest: ShoppingCart.cs
     graders:
       - type: output_matches
         config:

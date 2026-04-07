@@ -12,9 +12,9 @@ stimuli:
       project and to the CI command? I want properties set consistently across all projects.
     environment:
       files:
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/mstest-vstest/TestProject.csproj
+        - src: ./fixtures/mstest-vstest/TestProject.csproj
           dest: TestProject.csproj
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/mstest-vstest/CalculatorTests.cs
+        - src: ./fixtures/mstest-vstest/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
       - type: output_matches
@@ -43,9 +43,9 @@ stimuli:
       on VSTest. I want to migrate to Microsoft.Testing.Platform. What do I need to change?
     environment:
       files:
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/nunit-vstest/TestProject.csproj
+        - src: ./fixtures/nunit-vstest/TestProject.csproj
           dest: TestProject.csproj
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/nunit-vstest/CalculatorTests.cs
+        - src: ./fixtures/nunit-vstest/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
       - type: output_matches
@@ -71,9 +71,9 @@ stimuli:
       I want to switch to Microsoft.Testing.Platform. What should I do?
     environment:
       files:
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/xunit-vstest/TestProject.csproj
+        - src: ./fixtures/xunit-vstest/TestProject.csproj
           dest: TestProject.csproj
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/xunit-vstest/CalculatorTests.cs
+        - src: ./fixtures/xunit-vstest/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
       - type: output_matches
@@ -98,11 +98,11 @@ stimuli:
       coverage. How do we update the pipeline?
     environment:
       files:
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/mstest-ci-pipeline/TestProject.csproj
+        - src: ./fixtures/mstest-ci-pipeline/TestProject.csproj
           dest: TestProject.csproj
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/mstest-ci-pipeline/ServiceTests.cs
+        - src: ./fixtures/mstest-ci-pipeline/ServiceTests.cs
           dest: ServiceTests.cs
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/mstest-ci-pipeline/azure-pipelines.yml
+        - src: ./fixtures/mstest-ci-pipeline/azure-pipelines.yml
           dest: azure-pipelines.yml
     graders:
       - type: output_matches
@@ -128,9 +128,9 @@ stimuli:
       to switch to Microsoft.Testing.Platform. What do I need to change?
     environment:
       files:
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/mstest-sdk-vstest/TestProject.csproj
+        - src: ./fixtures/mstest-sdk-vstest/TestProject.csproj
           dest: TestProject.csproj
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/mstest-sdk-vstest/AppTests.cs
+        - src: ./fixtures/mstest-sdk-vstest/AppTests.cs
           dest: AppTests.cs
     graders:
       - type: output_matches
@@ -156,9 +156,9 @@ stimuli:
       new command look like?
     environment:
       files:
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/mstest-vstest/TestProject.csproj
+        - src: ./fixtures/mstest-vstest/TestProject.csproj
           dest: TestProject.csproj
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/mstest-vstest/CalculatorTests.cs
+        - src: ./fixtures/mstest-vstest/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
       - type: output_matches
@@ -192,36 +192,10 @@ stimuli:
       this behavioral difference?
     environment:
       files:
-        - dest: TestProject.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
-                <OutputType>Exe</OutputType>
-                <EnableMSTestRunner>true</EnableMSTestRunner>
-                <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="MSTest" Version="3.8.0" />
-              </ItemGroup>
-            </Project>
-        - dest: ConditionalTests.cs
-          content: |
-            using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-            namespace MyApp.Tests;
-
-            #if INCLUDE_SLOW_TESTS
-            [TestClass]
-            public class SlowIntegrationTests
-            {
-                [TestMethod]
-                public void LongRunning_Succeeds()
-                {
-                    Assert.IsTrue(true);
-                }
-            }
-            #endif
+        - src: ./fixtures/handle-exit-code-8-when-migrating-from-vstest-to-mtp/TestProject.csproj
+          dest: TestProject.csproj
+        - src: ./fixtures/handle-exit-code-8-when-migrating-from-vstest-to-mtp/ConditionalTests.cs
+          dest: ConditionalTests.cs
     graders:
       - type: output_matches
         config:
@@ -240,26 +214,10 @@ stimuli:
       Do I still need TestingPlatformDotnetTestSupport?
     environment:
       files:
-        - dest: TestProject.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <OutputType>Exe</OutputType>
-                <EnableMSTestRunner>true</EnableMSTestRunner>
-                <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="MSTest" Version="3.8.0" />
-              </ItemGroup>
-            </Project>
-        - dest: global.json
-          content: |
-            {
-              "sdk": {
-                "version": "10.0.100"
-              }
-            }
+        - src: ./fixtures/configure-dotnet-test-mtp-mode-on-net-10-sdk/TestProject.csproj
+          dest: TestProject.csproj
+        - src: ./fixtures/configure-dotnet-test-mtp-mode-on-net-10-sdk/global.json
+          dest: global.json
     graders:
       - type: output_matches
         config:
@@ -281,41 +239,10 @@ stimuli:
       works the same way. How do I translate the filter?
     environment:
       files:
-        - dest: TestProject.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
-                <OutputType>Exe</OutputType>
-                <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="xunit.v3" Version="1.0.1" />
-              </ItemGroup>
-            </Project>
-        - dest: IntegrationTests.cs
-          content: |
-            using Xunit;
-
-            namespace MyApp.Tests;
-
-            [Trait("Category", "Smoke")]
-            public class IntegrationTests
-            {
-                [Fact]
-                public void HealthEndpoint_ReturnsOk()
-                {
-                    Assert.True(true);
-                }
-
-                [Theory]
-                [InlineData("api/v1")]
-                [InlineData("api/v2")]
-                public void ApiEndpoint_ReturnsOk(string path)
-                {
-                    Assert.False(string.IsNullOrEmpty(path));
-                }
-            }
+        - src: ./fixtures/migrate-xunit-net-vstest-filter-syntax-to-mtp/TestProject.csproj
+          dest: TestProject.csproj
+        - src: ./fixtures/migrate-xunit-net-vstest-filter-syntax-to-mtp/IntegrationTests.cs
+          dest: IntegrationTests.cs
     graders:
       - type: output_matches
         config:
@@ -337,9 +264,9 @@ stimuli:
       I want a complete migration plan to Microsoft.Testing.Platform.
     environment:
       files:
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/mstest-vstest/TestProject.csproj
+        - src: ./fixtures/mstest-vstest/TestProject.csproj
           dest: TestProject.csproj
-        - src: ../../../../tests/dotnet-test/migrate-vstest-to-mtp/fixtures/mstest-vstest/CalculatorTests.cs
+        - src: ./fixtures/mstest-vstest/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
       - type: output_matches

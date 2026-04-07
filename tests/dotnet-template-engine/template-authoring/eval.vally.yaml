@@ -8,20 +8,8 @@ stimuli:
     prompt: Validate the template.json file at .template.config/template.json and tell me if there are any issues
     environment:
       files:
-        - dest: .template.config/template.json
-          content: |
-            {
-              "author": "Test",
-              "classifications": ["Test"],
-              "name": "Test Template",
-              "shortName": "build",
-              "symbols": {
-                "myParam": {
-                  "type": "parameter",
-                  "datatype": "invalid-type"
-                }
-              }
-            }
+        - src: ./fixtures/validate-a-template-json-file/.template.config/template.json
+          dest: .template.config/template.json
     graders:
       - type: exit_success
       - type: output_contains
@@ -48,35 +36,10 @@ stimuli:
       it so my team can use it for new test projects. The template should be called 'Team Test Project'.
     environment:
       files:
-        - dest: test-output/MyTests/MyTests.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
-                <ImplicitUsings>enable</ImplicitUsings>
-                <Nullable>enable</Nullable>
-                <IsPackable>false</IsPackable>
-                <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
-                <PackageReference Include="xunit" Version="2.9.0" />
-                <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
-                  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-                  <PrivateAssets>all</PrivateAssets>
-                </PackageReference>
-              </ItemGroup>
-            </Project>
-        - dest: test-output/MyTests/UnitTest1.cs
-          content: |
-            using Xunit;
-
-            namespace MyTests;
-            public class UnitTest1
-            {
-                [Fact]
-                public void Test1() { }
-            }
+        - src: ./fixtures/create-template-from-existing-project/test-output/MyTests/MyTests.csproj
+          dest: test-output/MyTests/MyTests.csproj
+        - src: ./fixtures/create-template-from-existing-project/test-output/MyTests/UnitTest1.cs
+          dest: test-output/MyTests/UnitTest1.cs
     graders:
       - type: exit_success
       - type: output_contains

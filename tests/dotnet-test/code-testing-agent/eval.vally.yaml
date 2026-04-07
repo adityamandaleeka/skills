@@ -12,7 +12,7 @@ stimuli:
       Please generate comprehensive unit tests that achieve high code coverage.
     environment:
       files:
-        - src: ./fixtures
+        - src: .
           dest: .
     graders:
       - type: run_command

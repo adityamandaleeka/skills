@@ -101,17 +101,8 @@ stimuli:
       coupon codes. Can you write a complete MSTest test suite for me?
     environment:
       files:
-        - dest: ShoppingCart.cs
-          content: |
-            namespace Store;
-
-            public sealed class ShoppingCart
-            {
-                public void AddItem(string sku, int quantity, decimal price) => throw new NotImplementedException();
-                public void RemoveItem(string sku) => throw new NotImplementedException();
-                public decimal CalculateTotal() => throw new NotImplementedException();
-                public void ApplyCoupon(string code) => throw new NotImplementedException();
-            }
+        - src: ./fixtures/decline-request-to-write-new-tests-from-scratch/ShoppingCart.cs
+          dest: ShoppingCart.cs
     graders:
       - type: output_matches
         config:

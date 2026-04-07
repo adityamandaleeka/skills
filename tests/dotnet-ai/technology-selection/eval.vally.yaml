@@ -11,31 +11,12 @@ stimuli:
       endpoint."
     environment:
       files:
-        - dest: TicketClassifier/TicketClassifier.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk.Web">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <Nullable>enable</Nullable>
-                <ImplicitUsings>enable</ImplicitUsings>
-              </PropertyGroup>
-            </Project>
-        - dest: TicketClassifier/Program.cs
-          content: |
-            var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddControllers();
-            var app = builder.Build();
-            app.MapControllers();
-            app.Run();
-        - dest: TicketClassifier/Data/tickets.csv
-          content: |
-            Subject,Description,Priority,Category
-            "Cannot login","I am unable to login to my account",1,Technical
-            "Billing error","I was charged twice for my subscription",2,Billing
-            "How to reset password","I need help resetting my password",3,General
-            "Server down","The API server is returning 500 errors",1,Technical
-            "Refund request","I would like a refund for last month",2,Billing
-            "Feature question","Does the product support SSO?",3,General
+        - src: ./fixtures/ml-net-classification-on-tabular-data/TicketClassifier/TicketClassifier.csproj
+          dest: TicketClassifier/TicketClassifier.csproj
+        - src: ./fixtures/ml-net-classification-on-tabular-data/TicketClassifier/Program.cs
+          dest: TicketClassifier/Program.cs
+        - src: ./fixtures/ml-net-classification-on-tabular-data/TicketClassifier/Data/tickets.csv
+          dest: TicketClassifier/Data/tickets.csv
     graders:
       - type: output_contains
         config:
@@ -61,31 +42,12 @@ stimuli:
       return a concise summary.
     environment:
       files:
-        - dest: DocSummary/DocSummary.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk.Web">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <Nullable>enable</Nullable>
-                <ImplicitUsings>enable</ImplicitUsings>
-              </PropertyGroup>
-            </Project>
-        - dest: DocSummary/Program.cs
-          content: |
-            var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddControllers();
-            var app = builder.Build();
-            app.MapControllers();
-            app.Run();
-        - dest: DocSummary/appsettings.json
-          content: |
-            {
-              "Logging": {
-                "LogLevel": {
-                  "Default": "Information"
-                }
-              }
-            }
+        - src: ./fixtures/llm-integration-with-meai-abstraction/DocSummary/DocSummary.csproj
+          dest: DocSummary/DocSummary.csproj
+        - src: ./fixtures/llm-integration-with-meai-abstraction/DocSummary/Program.cs
+          dest: DocSummary/Program.cs
+        - src: ./fixtures/llm-integration-with-meai-abstraction/DocSummary/appsettings.json
+          dest: DocSummary/appsettings.json
     graders:
       - type: output_contains
         config:
@@ -115,29 +77,12 @@ stimuli:
       predict whether a customer will churn (yes/no).
     environment:
       files:
-        - dest: ChurnPredictor/ChurnPredictor.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk.Web">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <Nullable>enable</Nullable>
-                <ImplicitUsings>enable</ImplicitUsings>
-              </PropertyGroup>
-            </Project>
-        - dest: ChurnPredictor/Program.cs
-          content: |
-            var builder = WebApplication.CreateBuilder(args);
-            var app = builder.Build();
-            app.MapGet("/", () => "Hello");
-            app.Run();
-        - dest: ChurnPredictor/Data/customers.csv
-          content: |
-            Age,Income,Region,PurchaseHistory,Churned
-            25,45000,East,12,No
-            45,80000,West,3,Yes
-            35,60000,North,8,No
-            55,90000,South,1,Yes
-            30,50000,East,15,No
+        - src: ./fixtures/reject-llm-for-tabular-classification/ChurnPredictor/ChurnPredictor.csproj
+          dest: ChurnPredictor/ChurnPredictor.csproj
+        - src: ./fixtures/reject-llm-for-tabular-classification/ChurnPredictor/Program.cs
+          dest: ChurnPredictor/Program.cs
+        - src: ./fixtures/reject-llm-for-tabular-classification/ChurnPredictor/Data/customers.csv
+          dest: ChurnPredictor/Data/customers.csv
     graders:
       - type: output_contains
         config:
@@ -155,24 +100,10 @@ stimuli:
       findings. The agent should have access to a web search tool and a note-taking tool.
     environment:
       files:
-        - dest: ResearchAgent/ResearchAgent.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <OutputType>Exe</OutputType>
-                <Nullable>enable</Nullable>
-                <ImplicitUsings>enable</ImplicitUsings>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="Microsoft.Agents.AI" Version="1.*-*" />
-                <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.*" />
-                <PackageReference Include="OpenAI" Version="2.*" />
-              </ItemGroup>
-            </Project>
-        - dest: ResearchAgent/Program.cs
-          content: |
-            Console.WriteLine("Research Agent Starting...");
+        - src: ./fixtures/agentic-workflow-with-guardrails/ResearchAgent/ResearchAgent.csproj
+          dest: ResearchAgent/ResearchAgent.csproj
+        - src: ./fixtures/agentic-workflow-with-guardrails/ResearchAgent/Program.cs
+          dest: ResearchAgent/Program.cs
     graders:
       - type: output_contains
         config:
@@ -199,22 +130,12 @@ stimuli:
       our documentation. Show me your plan before continuing with the implementation.
     environment:
       files:
-        - dest: HelpChatbot/HelpChatbot.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk.Web">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <Nullable>enable</Nullable>
-                <ImplicitUsings>enable</ImplicitUsings>
-              </PropertyGroup>
-            </Project>
-        - dest: HelpChatbot/Program.cs
-          content: |
-            var builder = WebApplication.CreateBuilder(args);
-            var app = builder.Build();
-            app.Run();
-        - dest: HelpChatbot/Docs/product-guide.pdf
-          content: (placeholder PDF content)
+        - src: ./fixtures/natural-language-scenario-decomposition-rag-chatbot/HelpChatbot/HelpChatbot.csproj
+          dest: HelpChatbot/HelpChatbot.csproj
+        - src: ./fixtures/natural-language-scenario-decomposition-rag-chatbot/HelpChatbot/Program.cs
+          dest: HelpChatbot/Program.cs
+        - src: ./fixtures/natural-language-scenario-decomposition-rag-chatbot/HelpChatbot/Docs/product-guide.pdf
+          dest: HelpChatbot/Docs/product-guide.pdf
     graders:
       - type: output_contains
         config:
@@ -242,32 +163,14 @@ stimuli:
       code.
     environment:
       files:
-        - dest: ProductQA/ProductQA.csproj
-          content: |
-            <Project Sdk="Microsoft.NET.Sdk.Web">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <Nullable>enable</Nullable>
-                <ImplicitUsings>enable</ImplicitUsings>
-              </PropertyGroup>
-            </Project>
-        - dest: ProductQA/Program.cs
-          content: |
-            var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddControllers();
-            var app = builder.Build();
-            app.MapControllers();
-            app.Run();
-        - dest: ProductQA/Docs/getting-started.md
-          content: |
-            # Getting Started
-            To install the product, run `dotnet tool install --global product-cli`.
-            The minimum requirement is .NET 10.0 SDK.
-        - dest: ProductQA/Docs/configuration.md
-          content: |
-            # Configuration
-            Configuration is done via appsettings.json or environment variables.
-            Set `PRODUCT_API_KEY` to authenticate with the service.
+        - src: ./fixtures/rag-pipeline-with-vector-search/ProductQA/ProductQA.csproj
+          dest: ProductQA/ProductQA.csproj
+        - src: ./fixtures/rag-pipeline-with-vector-search/ProductQA/Program.cs
+          dest: ProductQA/Program.cs
+        - src: ./fixtures/rag-pipeline-with-vector-search/ProductQA/Docs/getting-started.md
+          dest: ProductQA/Docs/getting-started.md
+        - src: ./fixtures/rag-pipeline-with-vector-search/ProductQA/Docs/configuration.md
+          dest: ProductQA/Docs/configuration.md
     graders:
       - type: output_contains
         config:
