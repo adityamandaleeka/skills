@@ -164,12 +164,15 @@ jobs:
               --output-dir "$SKILLED_DIR" \
               2>&1 || echo "::warning::Skilled eval failed for $EVAL_NAME"
 
-            # Adapt results
-            if ls "$BASELINE_DIR"/*.jsonl 1>/dev/null 2>&1 && ls "$SKILLED_DIR"/*.jsonl 1>/dev/null 2>&1; then
+            # Adapt results — find JSONL in timestamped subdirs
+            BASELINE_JSONL=$(find "$BASELINE_DIR" -name "*.jsonl" -type f 2>/dev/null | head -1)
+            SKILLED_JSONL=$(find "$SKILLED_DIR" -name "*.jsonl" -type f 2>/dev/null | head -1)
+
+            if [ -n "$BASELINE_JSONL" ] && [ -n "$SKILLED_JSONL" ]; then
               echo "--- Adapting results ---"
               node eng/vally-adapter/adapt.mjs \
-                --baseline "$BASELINE_DIR" \
-                --skilled "$SKILLED_DIR" \
+                --baseline "$(dirname "$BASELINE_JSONL")" \
+                --skilled "$(dirname "$SKILLED_JSONL")" \
                 --skill-name "$EVAL_NAME" \
                 --skill-path "${{ matrix.entry.skills_path }}" \
                 --model "${{ env.MODEL }}" \
