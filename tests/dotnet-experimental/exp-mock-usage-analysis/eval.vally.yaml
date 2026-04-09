@@ -20,16 +20,16 @@ stimuli:
         - src: unused-setups/InventoryService.cs
           dest: InventoryService.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (unused|dead|unreachable|never.*call|not.*invoke|unnecessary.*setup)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (GetLowStockProducts|low.?stock)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Restock_ZeroQuantity|throws.*before|argument.*validation|early.*return)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -57,13 +57,13 @@ stimuli:
         - src: redundant-mocks/BillingService.cs
           dest: BillingService.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (redundant|duplicat|repeated|identical.*setup|copy|shared|extract|helper|fixture)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ChargeCustomer_CustomerNotFound|gateway.*setup.*never.*reach|unreachable)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -89,13 +89,13 @@ stimuli:
         - src: stable-utility-mocks/AuthenticationService.cs
           dest: AuthenticationService.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (NullLogger|Options\.Create|real.*implementation|replace.*mock|unnecessary.*mock.*ILogger|unnecessary.*mock.*IOptions)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (IUserStore|IPasswordHasher).*(keep|appropriate|correct|valid)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -122,13 +122,13 @@ stimuli:
         - src: nsubstitute-mocks/ShippingService.cs
           dest: ShippingService.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (unused|unnecessary|never.*call|not.*invoke|GetTracking|CreateShipment.*GetQuote|CalculateRate.*Ship)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Ship_OnlyVerifiesInteractions|Received|interaction.*only|no.*assert.*result)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -155,10 +155,10 @@ stimuli:
         - src: fakeiteasy-mocks/NotificationDispatcher.cs
           dest: NotificationDispatcher.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (unused|unnecessary|never.*call|not.*invoke|push.*sms|sms.*push|wrong.*channel)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -189,16 +189,16 @@ stimuli:
         - src: setup-sprawl/ReportGenerator.cs
           dest: ReportGenerator.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (sprawl|excessive|too many|bloat|overwhelm|unreadable|dominant|setup.*lines)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (GetCustomers|GetProducts|GetExchangeRate|FormatAsPdf|FormatAsCsv|GetLatest|cache).*(unused|never|unnecessary|not.*call)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (extract|helper|builder|fixture|shared|TestInitialize|refactor)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:

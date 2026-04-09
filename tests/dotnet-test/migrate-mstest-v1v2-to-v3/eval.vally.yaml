@@ -15,10 +15,10 @@ stimuli:
         - src: fixtures/v1-assembly-ref/OrderServiceTests.cs
           dest: OrderServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (QualityTools|assembly.?ref|UnitTestFramework)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (MSTest|MSTest\.TestFramework|MSTest\.Sdk)
       - type: prompt
@@ -39,10 +39,10 @@ stimuli:
         - src: fixtures/v2-nuget/UserServiceTests.cs
           dest: UserServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (2\.2\.10|v2|version 2)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (3\.[0-9]+|v3|version 3)
       - type: prompt
@@ -65,7 +65,7 @@ stimuli:
         - src: ./fixtures/fix-assert-areequal-object-overload-errors-after-v3-upgrade/ComparisonTests.cs
           dest: ComparisonTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (generic|AreEqual<|<T>|type.?param)
       - type: prompt
@@ -86,10 +86,10 @@ stimuli:
         - src: ./fixtures/migrate-from-testsettings-to-runsettings/local.testsettings
           dest: local.testsettings
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (runsettings|\.runsettings)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (testsettings|legacy|no longer supported)
       - type: prompt
@@ -111,7 +111,7 @@ stimuli:
         - src: ./fixtures/fix-datarow-type-mismatch-errors-after-v3-upgrade/DataDrivenTests.cs
           dest: DataDrivenTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (DataRow|type.?match|constructor|16|param)
       - type: prompt
@@ -133,7 +133,7 @@ stimuli:
         - src: fixtures/v2-nuget/UserServiceTests.cs
           dest: UserServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: MSTest\.Sdk
       - type: prompt
@@ -152,7 +152,7 @@ stimuli:
         - src: ./fixtures/handle-dropped-target-framework-during-v3-migration/TestProject.csproj
           dest: TestProject.csproj
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (net5\.0|dropped|unsupported|net6\.0|net8\.0)
       - type: prompt
@@ -175,16 +175,16 @@ stimuli:
         - src: fixtures/v2-complex/local.testsettings
           dest: local.testsettings
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (net5\.0|dropped|unsupported|net8\.0)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (AreEqual|generic|<T>|object)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (DataRow|type.?match|long|int)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (testsettings|runsettings|legacy)
       - type: prompt
@@ -211,10 +211,10 @@ stimuli:
         - src: fixtures/v2-nuget/UserServiceTests.cs
           dest: ModernTests/UserServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (QualityTools|assembly.?ref|v1)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (2\.2\.10|v2|NuGet)
       - type: prompt

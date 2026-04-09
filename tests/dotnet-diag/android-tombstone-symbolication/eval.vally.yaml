@@ -12,22 +12,22 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: libmonosgen-2\.0\.so
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: elf-buildid-sym-1eb39fc72918c7c6c0c610b79eb3d3d47b2f81be
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: llvm-symbolizer
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (0x)?0*222098
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --obj=
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: msdl\.microsoft\.com
       - type: prompt
@@ -47,11 +47,11 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (no .NET|not a .NET|no .net|no dotnet|no managed|not .NET|does not contain .NET|doesn.t contain .NET|no mono|no
             CoreCLR|no libmonosgen|no libcoreclr)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (libc\.so|libart\.so|libutils\.so|libnativeapp\.so)
       - type: prompt
@@ -70,16 +70,16 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: libcoreclr\.so
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: elf-buildid-sym-4ca7e2f19b3d605847a1c8e3f5b7d9a2c4e6f801
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: llvm-symbolizer
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (0x)?0*3a81f0
       - type: prompt
@@ -98,13 +98,13 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (NativeAOT|native.AOT|nativeaot|statically.link|app.binary|libNativeAotApp)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: libSystem\.Native\.so
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: elf-buildid-sym-5e7c2a4b6d8e0f2138b2d4f6a1c3e5079a1b3d5f
       - type: prompt
@@ -125,19 +125,19 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: libmonosgen-2\.0\.so
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: elf-buildid-sym-1eb39fc72918c7c6c0c610b79eb3d3d47b2f81be
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (SGen.worker|Finalizer)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (HeapTaskDaemon|SGen.worker|Finalizer)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: llvm-symbolizer
       - type: prompt
@@ -155,10 +155,10 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: libmonosgen-2\.0\.so
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (no BuildId|no.build.?id|missing BuildId|without
             BuildId|BuildId.*(not|missing|absent|unavailable)|cannot.*(symbolicate|download|resolve))
@@ -179,22 +179,22 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: libmonosgen-2\.0\.so
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: libSystem\.Native\.so
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: elf-buildid-sym-1eb39fc72918c7c6c0c610b79eb3d3d47b2f81be
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: elf-buildid-sym-7a3b5c9d1e4f6082a3c5d7e9f1b2d4a6c8e0f213
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (elf-buildid-sym-2f4a6b8c|libSystem\.Globalization\.Native\.so)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: msdl\.microsoft\.com
       - type: prompt
@@ -212,7 +212,7 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (iOS|iPhone|Apple|not.*(Android|tombstone)|wrong.*(format|type)|different.*(format|process))
       - type: prompt

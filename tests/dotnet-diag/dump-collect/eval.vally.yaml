@@ -11,16 +11,16 @@ stimuli:
       dump is written to /var/dumps. Show me the environment variables to set
       and how to verify the configuration.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DOTNET_DbgEnableMiniDump
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DOTNET_DbgMiniDumpType
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DOTNET_DbgMiniDumpName
-      - type: output_contains
+      - type: output-contains
         config:
           substring: /var/dumps
       - type: prompt
@@ -37,16 +37,16 @@ stimuli:
       tool is installed at /opt/tools/createdump. Configure automatic crash
       dump collection and give me the pod spec changes I need.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DOTNET_DbgEnableMiniDump
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DOTNET_DbgCreateDumpToolPath
-      - type: output_contains
+      - type: output-contains
         config:
           substring: SYS_PTRACE
-      - type: output_contains
+      - type: output-contains
         config:
           substring: /opt/tools/createdump
       - type: prompt
@@ -62,10 +62,10 @@ stimuli:
       My NativeAOT app just crashed on macOS. I don't have createdump
       available. How can I find the crash dump or crash report?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: /cores
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: DiagnosticReports|crash
       - type: prompt
@@ -81,13 +81,13 @@ stimuli:
       Alpine-based Docker container. The container runs as a non-root user.
       Give me the Dockerfile changes and docker run command.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DOTNET_DbgEnableMiniDump
-      - type: output_contains
+      - type: output-contains
         config:
           substring: SYS_PTRACE
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: chown|chmod|fsGroup
       - type: prompt
@@ -103,13 +103,13 @@ stimuli:
       What steps would I follow to recover a crash dump on macOS if my
       NativeAOT app crashed and I don't have createdump available?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: /cores
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: DiagnosticReports|crash
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: ulimit
       - type: prompt
@@ -125,13 +125,13 @@ stimuli:
       If I had a CoreCLR app in an Alpine Docker container running as a
       non-root user, what would I need to configure for crash dump collection?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DOTNET_DbgEnableMiniDump
-      - type: output_contains
+      - type: output-contains
         config:
           substring: SYS_PTRACE
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: chown|chmod|mkdir|permission
       - type: prompt
@@ -148,13 +148,13 @@ stimuli:
       NativeAOT .NET 11 app in Kubernetes, assuming createdump is available
       at /opt/tools/createdump. What pod spec changes are needed?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DOTNET_DbgEnableMiniDump
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DOTNET_DbgCreateDumpToolPath
-      - type: output_contains
+      - type: output-contains
         config:
           substring: SYS_PTRACE
       - type: prompt
@@ -171,7 +171,7 @@ stimuli:
       automatic crash dump collection. I'm not sure if it's CoreCLR or NativeAOT.
       Help me figure out which runtime it's using and configure dumps accordingly.
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: CorExeMain|Rhp|strings|readlink
       - type: prompt
@@ -187,7 +187,7 @@ stimuli:
       I already have a .dmp crash dump file from my .NET app. Can you help
       me analyze it to find the root cause of the crash?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: out of scope|not cover|does not|cannot|only.*collect
       - type: prompt

@@ -57,13 +57,13 @@ stimuli:
       }
       ```
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: CancellationToken
-      - type: output_contains
+      - type: output-contains
         config:
           substring: OperationCanceledException
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -109,13 +109,13 @@ stimuli:
       }
       ```
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: CancellationTokenSource
-      - type: output_contains
+      - type: output-contains
         config:
           substring: CancelAfter
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -173,13 +173,13 @@ stimuli:
       }
       ```
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: CancellationToken
-      - type: output_contains
+      - type: output-contains
         config:
           substring: WaitHandle
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -237,13 +237,13 @@ stimuli:
 
       ```
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Redirect(
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: Thread\.Abort\s*\(
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -285,11 +285,11 @@ stimuli:
       }
       ```
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (no|not|don't|doesn't|without).{0,50}(migration|migrat|changes needed|changes required)|(already
             (compatible|works|supported))
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:

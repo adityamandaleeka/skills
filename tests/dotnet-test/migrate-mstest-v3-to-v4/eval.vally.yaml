@@ -16,10 +16,10 @@ stimuli:
         - src: fixtures/v3-custom-testmethod/PaymentServiceTests.cs
           dest: PaymentServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: ExecuteAsync
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Task<TestResult\[\]>|Task<.*TestResult.*>
       - type: prompt
@@ -40,10 +40,10 @@ stimuli:
         - src: fixtures/v3-expected-exception/ValidationServiceTests.cs
           dest: ValidationServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ThrowsExactly|Assert\.Throws)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ExpectedException|removed|deprecated)
       - type: prompt
@@ -65,13 +65,13 @@ stimuli:
         - src: fixtures/v3-assert-changes/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ThrowsExactly|ThrowsException)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ClassCleanup|ClassCleanupBehavior)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ContainsKey|IDictionary)
       - type: prompt
@@ -94,7 +94,7 @@ stimuli:
         - src: fixtures/v3-dropped-tfm/SimpleTests.cs
           dest: SimpleTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (net6\.0|dropped|unsupported|net8\.0)
       - type: prompt
@@ -116,10 +116,10 @@ stimuli:
         - src: ./fixtures/fix-testmethodattribute-callerinfo-constructor-breaking-chan/CustomAttributes.cs
           dest: CustomAttributes.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (CallerFilePath|CallerLineNumber|caller.?info)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (DisplayName|display.?name)
       - type: prompt
@@ -143,10 +143,10 @@ stimuli:
         - src: ./fixtures/understand-behavioral-changes-after-mstest-v4-upgrade/SetupTests.cs
           dest: SetupTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (TestCase\.Id|test.?id|history|Azure DevOps)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (TestName|ClassInitialize|cannot.?be.?accessed|throws)
       - type: prompt
@@ -168,10 +168,10 @@ stimuli:
         - src: ./fixtures/handle-mstest-sdk-and-mtp-changes-in-v4/PipelineTests.cs
           dest: PipelineTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Microsoft\.NET\.Test\.Sdk|VSTest|vstest)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (removed|no longer|package.?reference)
       - type: prompt
@@ -193,16 +193,16 @@ stimuli:
         - src: ./fixtures/full-mstest-v3-to-v4-migration-with-multiple-breaking-change/IntegrationTests.cs
           dest: IntegrationTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (net8\.0|target.?framework|dropped)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ExecuteAsync|Execute.*Async)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ExpectedException|ThrowsExactly)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ClassCleanupBehavior|ClassCleanup)
       - type: prompt
@@ -228,13 +228,13 @@ stimuli:
         - src: fixtures/v3-sdk-project/DiagnosticTests.cs
           dest: DiagnosticTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ManagedType|FullyQualifiedTestClassName)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (TestTimeout|int\.MaxValue|Infinite)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ContainsKey|Contains)
       - type: prompt
@@ -256,10 +256,10 @@ stimuli:
         - src: fixtures/v3-expected-exception/ValidationServiceTests.cs
           dest: ValidationServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (v4|4\.[0-9]+|MSTest 4)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ExpectedException|ThrowsExactly)
       - type: prompt

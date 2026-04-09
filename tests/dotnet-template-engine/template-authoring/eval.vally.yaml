@@ -11,14 +11,14 @@ stimuli:
         - src: ./fixtures/validate-a-template-json-file/.template.config/template.json
           dest: .template.config/template.json
     graders:
-      - type: exit_success
-      - type: output_contains
+      - type: exit-success
+      - type: output-contains
         config:
           substring: identity
-      - type: output_contains
+      - type: output-contains
         config:
           substring: shortName
-      - type: output_contains
+      - type: output-contains
         config:
           substring: datatype
       - type: prompt
@@ -41,11 +41,11 @@ stimuli:
         - src: ./fixtures/create-template-from-existing-project/test-output/MyTests/UnitTest1.cs
           dest: test-output/MyTests/UnitTest1.cs
     graders:
-      - type: exit_success
-      - type: output_contains
+      - type: exit-success
+      - type: output-contains
         config:
           substring: Team Test Project
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)(template\.json|sourceName|\.template\.config)
       - type: prompt

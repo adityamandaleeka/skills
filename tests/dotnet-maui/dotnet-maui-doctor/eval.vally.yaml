@@ -12,16 +12,16 @@ stimuli:
       right versions, and how to verify everything works. Please provide the
       official recommended installation sources.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Xcode
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)apple developer|developer\.apple\.com
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Microsoft
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)version|pin
       - type: prompt
@@ -40,16 +40,16 @@ stimuli:
       Give me a specific plan to set up the environment, including how to find
       the correct versions for everything.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: maui-android
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Microsoft
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)version|pin
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: sdkmanager|android command-line tools
       - type: prompt
@@ -66,7 +66,7 @@ stimuli:
       workloads are out of date. Should I run `dotnet workload update` or
       `dotnet workload repair` to fix this?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)version|pin
       - type: prompt
@@ -83,13 +83,13 @@ stimuli:
       `java -version` shows `OpenJDK Runtime Environment Temurin-17.0.12+7`.
       What's wrong and how do I fix it?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Microsoft
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: (?i)Temurin.{0,20}(fine|correct|ok|good|supported)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: JAVA_HOME
       - type: prompt
@@ -106,16 +106,16 @@ stimuli:
       me a complete step-by-step plan with all the PowerShell commands I'll need,
       including how to discover the right versions dynamically.
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: sdkmanager\.bat
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)version|pin
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Microsoft
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: workload update|workload repair
       - type: prompt
@@ -133,13 +133,13 @@ stimuli:
       `export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home`
       to my shell profile. Is this the right fix? What should I actually do?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)not required|not necessary|optional|auto.?detect|don't need to set
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Microsoft
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: (?i)Temurin.{0,20}(fine|correct|ok|good|right)
       - type: prompt
@@ -157,16 +157,16 @@ stimuli:
       with my current .NET SDK. I don't want to guess or use outdated docs —
       how can I programmatically determine the exact package list my SDK needs?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: build-tools
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)api.?level|platforms;android
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)manifest|workload.?dependenc
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: sdkmanager
       - type: prompt
@@ -184,16 +184,16 @@ stimuli:
       out a diagnostic and fix plan that brings my workloads and Android SDK
       into a consistent state for the new SDK.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: dotnet --info
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet workload (list|install)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)version|pin
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: workload update|workload repair
       - type: prompt

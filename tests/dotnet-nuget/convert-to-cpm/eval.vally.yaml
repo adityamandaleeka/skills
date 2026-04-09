@@ -11,13 +11,13 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: packages.config
-      - type: output_contains
+      - type: output-contains
         config:
           substring: PackageReference
-      - type: file_not_exists
+      - type: file-not-exists
         config:
           path: simple-packages-config/Directory.Packages.props
       - type: prompt
@@ -38,10 +38,10 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Central Package Management|CPM|Directory\.Packages\.props)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (conflict|mismatch|different version|out of sync)
       - type: prompt
@@ -62,10 +62,10 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Central Package Management|CPM|Directory\.Packages\.props)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (BlobsVersion|HostingVersion|Common\.props)
       - type: prompt
@@ -86,11 +86,11 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: file_contains
+      - type: file-contains
         config:
           path: simple-single-project/Directory.Packages.props
           value: ManagePackageVersionsCentrally
-      - type: file_contains
+      - type: file-contains
         config:
           path: simple-single-project/Directory.Packages.props
           value: PackageVersion
@@ -114,11 +114,11 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: file_contains
+      - type: file-contains
         config:
           path: simple-solution/Directory.Packages.props
           value: ManagePackageVersionsCentrally
-      - type: file_contains
+      - type: file-contains
         config:
           path: simple-solution/Tests/Tests.csproj
           value: PrivateAssets
@@ -148,19 +148,19 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: file_contains
+      - type: file-contains
         config:
           path: moderate-msbuild-properties/Directory.Packages.props
           value: ManagePackageVersionsCentrally
-      - type: file_not_contains
+      - type: file-not-contains
         config:
           path: moderate-msbuild-properties/Directory.Build.props
           value: OTelVersion
-      - type: file_not_contains
+      - type: file-not-contains
         config:
           path: moderate-msbuild-properties/Directory.Build.props
           value: DIVersion
-      - type: file_contains
+      - type: file-contains
         config:
           path: moderate-msbuild-properties/Directory.Build.props
           value: OutputPath
@@ -190,18 +190,18 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: file_contains
+      - type: file-contains
         config:
           path: moderate-version-conflicts/Directory.Packages.props
           value: ManagePackageVersionsCentrally
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (conflict|mismatch|different version)
-      - type: file_contains
+      - type: file-contains
         config:
           path: moderate-version-conflicts/Directory.Packages.props
           value: System.Text.Json
-      - type: file_contains
+      - type: file-contains
         config:
           path: moderate-version-conflicts/Directory.Packages.props
           value: Azure.Identity
@@ -232,26 +232,26 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: file_contains
+      - type: file-contains
         config:
           path: advanced-multi-complexity/Directory.Packages.props
           value: ManagePackageVersionsCentrally
-      - type: file_contains
+      - type: file-contains
         config:
           path: advanced-multi-complexity/Directory.Packages.props
           value: System.Text.Json
-      - type: file_not_contains
+      - type: file-not-contains
         config:
           path: advanced-multi-complexity/Directory.Build.props
           value: BlobsVersion
-      - type: file_not_contains
+      - type: file-not-contains
         config:
           path: advanced-multi-complexity/Directory.Build.props
           value: HostingVersion
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (condition|conditional|TargetFramework)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Common\.props
       - type: prompt

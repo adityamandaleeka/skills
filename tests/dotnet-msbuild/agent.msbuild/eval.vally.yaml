@@ -15,7 +15,7 @@ stimuli:
         - binlog-failure-analysis
         - binlog-generation
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: NU1101
       - type: prompt
@@ -33,7 +33,7 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Directory\.Build\.props|Directory\.Build\.targets
       - type: prompt

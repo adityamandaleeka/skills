@@ -16,10 +16,10 @@ stimuli:
         - src: fixtures/partial-coverage/OrderServiceTests.csproj
           dest: OrderServiceTests.csproj
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: CRAP
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: complexity|cyclomatic
       - type: prompt
@@ -42,7 +42,7 @@ stimuli:
         - src: fixtures/partial-coverage/OrderServiceTests.csproj
           dest: OrderServiceTests.csproj
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: CRAP
       - type: prompt
@@ -63,10 +63,10 @@ stimuli:
         - src: fixtures/no-coverage/TestProject.csproj
           dest: TestProject.csproj
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet test
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: coverage
       - type: prompt

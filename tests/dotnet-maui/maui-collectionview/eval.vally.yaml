@@ -11,19 +11,19 @@ stimuli:
       CollectionView with a DataTemplate that shows both the name and price.
       Use compiled bindings.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: CollectionView
-      - type: output_contains
+      - type: output-contains
         config:
           substring: ItemsSource
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DataTemplate
-      - type: output_contains
+      - type: output-contains
         config:
           substring: x:DataType
-      - type: output_contains
+      - type: output-contains
         config:
           substring: ObservableCollection
       - type: prompt
@@ -40,16 +40,16 @@ stimuli:
       grid layout with spacing between items. Each item should show an image
       and a caption. How do I set this up in XAML?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: GridItemsLayout
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Span
-      - type: output_contains
+      - type: output-contains
         config:
           substring: CollectionView
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)spacing|ItemSpacing
       - type: prompt
@@ -66,16 +66,16 @@ stimuli:
       to a detail page. When they pull to refresh, I want to reload data
       from my API. Show me the XAML and explain the ViewModel bindings needed.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: SelectionMode
-      - type: output_contains
+      - type: output-contains
         config:
           substring: SelectedItem
-      - type: output_contains
+      - type: output-contains
         config:
           substring: RefreshView
-      - type: output_contains
+      - type: output-contains
         config:
           substring: IsRefreshing
       - type: prompt
@@ -91,10 +91,10 @@ stimuli:
       ListView with ViewCell for each item. Should I keep using ListView in
       MAUI? Also, can I reuse my ViewCell templates inside CollectionView?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: CollectionView
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)(not|never|don.t|avoid|remove|replace).{0,40}ViewCell|ViewCell.{0,40}(not|never|don.t|avoid|remove|replace)
       - type: prompt

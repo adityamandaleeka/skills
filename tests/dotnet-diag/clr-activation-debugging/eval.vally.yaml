@@ -18,16 +18,16 @@ stimuli:
         - src: fixtures/csc-healthy.txt
           dest: logs/csc.exe.CLRLoad00.txt
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: mt.exe
-      - type: output_contains
+      - type: output-contains
         config:
           substring: SEM_FAILCRITICALERRORS
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DllGetClassObject
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: fondue|feature-on-demand|FOD
       - type: prompt
@@ -50,16 +50,16 @@ stimuli:
         - src: fixtures/mt-fod-suppressed.txt
           dest: logs/mt.exe.CLRLoad00.txt
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Could have launched
-      - type: output_contains
+      - type: output-contains
         config:
           substring: IsCapped
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: v2\.0\.50727|v2\.0
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: config|\.config
       - type: prompt
@@ -84,10 +84,10 @@ stimuli:
         - src: fixtures/mt-fod-launched.txt
           dest: logs/mt-from-cmdline.CLRLoad00.txt
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: SEM_FAILCRITICALERRORS
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: inherit|parent
       - type: prompt
@@ -107,10 +107,10 @@ stimuli:
         - src: fixtures/csc-healthy.txt
           dest: logs/csc.exe.CLRLoad00.txt
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: v4.0.30319
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: success|normal|healthy|no.*(issue|error|problem)
       - type: prompt
@@ -130,13 +130,13 @@ stimuli:
         - src: fixtures/link-multi-activation.txt
           dest: logs/link.exe.CLRLoad00.txt
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DllGetClassObject
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: two|multiple|second|separate
-      - type: output_contains
+      - type: output-contains
         config:
           substring: IsCapped
       - type: prompt
@@ -157,13 +157,13 @@ stimuli:
         - src: fixtures/tool-with-legacy-policy.txt
           dest: logs/tool.exe.CLRLoad00.txt
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: useLegacyV2RuntimeActivationPolicy
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: legacy|capp
-      - type: output_contains
+      - type: output-contains
         config:
           substring: v4.0
       - type: prompt
@@ -178,7 +178,7 @@ stimuli:
       My .NET app crashes with a NullReferenceException after startup.
       Can you analyze the CLR activation logs to find the bug?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: activation.*succeed|loaded.*success|not.*activation|after.*load|runtime.*error|not.*scope
       - type: prompt

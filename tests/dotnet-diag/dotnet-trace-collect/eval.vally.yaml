@@ -8,10 +8,10 @@ stimuli:
     prompt: My ASP.NET Core application running on Linux in a Kubernetes pod is experiencing high CPU usage. I'm running
       .NET 8. How do I collect diagnostic data to figure out what's going on?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (dotnet-trace|dotnet trace)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (kubectl|container|pod)
       - type: prompt
@@ -27,10 +27,10 @@ stimuli:
     prompt: Our .NET Framework service running directly on a Windows Server has high CPU, but I don't have admin rights on
       the server. What diagnostics can I collect, and what are the limitations?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: PerfView
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (admin|privilege|elevated)
       - type: prompt
@@ -45,10 +45,10 @@ stimuli:
     prompt: My .NET 10 service runs directly on a Linux VM (kernel 6.8) and I have root access. I'm seeing high CPU and
       suspect native code is involved. What's the best way to collect a rich trace with native call stacks?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: collect-linux
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (native|kernel)
       - type: prompt
@@ -62,10 +62,10 @@ stimuli:
     prompt: My .NET 8 app running directly on a Linux VM has memory that keeps growing over hours. What exact data should I
       collect to identify a memory leak?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (dump|dump-collect)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (dotnet-trace|dotnet trace)
       - type: prompt
@@ -80,13 +80,13 @@ stimuli:
     prompt: My ASP.NET Core (.NET 8) app running on a Windows Server has slow requests under load. I have admin access.
       Which trace should I collect to capture waits/blocks, and what PerfView arguments should I use?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: PerfView
-      - type: output_contains
+      - type: output-contains
         config:
           substring: ThreadTime
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (BufferSizeMB|CircularMB)
       - type: prompt
@@ -101,13 +101,13 @@ stimuli:
     prompt: My .NET 8 service running on a Linux VM is spending a lot of time in garbage collection. Response times spike
       during GC pauses. What trace should I collect to analyze GC behavior, and what commands do I run?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (dotnet-trace|dotnet trace)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (gc-verbose|gc verbose)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --profile\s+gc-verbose
       - type: prompt
@@ -123,10 +123,10 @@ stimuli:
     prompt: My .NET 8 application running on a Linux VM appears completely hung — it's not responding to any requests. How
       do I diagnose what's going on?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (dotnet-trace|dotnet trace|trace)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (thread|stack)
       - type: prompt
@@ -142,10 +142,10 @@ stimuli:
     prompt: My .NET 8 application runs in a Windows container on Kubernetes. I'm seeing high CPU. I have admin access on the
       host. How do I collect a trace?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: PerfView
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (EnableEventsInContainers|container)
       - type: prompt
@@ -160,10 +160,10 @@ stimuli:
       hours. I have admin access but I can't sit and watch it. How do I set up PerfView to automatically capture the
       spike with a circular buffer?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: PerfView
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (StopOn|CircularMB|BufferSizeMB)
       - type: prompt
@@ -177,10 +177,10 @@ stimuli:
     prompt: I have a .NET 8 app running directly on a Linux server with root access. I suspect the high CPU is partly in
       native code (a native interop library). How do I get native call stacks in my trace?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: perfcollect
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (native|perf)
       - type: prompt
@@ -195,10 +195,10 @@ stimuli:
     prompt: I have a .NET 8 service running on Windows Server with admin access. CPU is pegged at 100%. What's the best tool
       to collect a CPU trace and how do I run it?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: PerfView
-      - type: output_contains
+      - type: output-contains
         config:
           substring: PerfView collect
       - type: prompt
@@ -211,10 +211,10 @@ stimuli:
     prompt: Our .NET Framework 4.8 Windows service has a slow memory leak. Memory grows over days until the process crashes
       with an OutOfMemoryException. I have admin access. What should I collect?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: PerfView
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (dump|dumps)
       - type: prompt
@@ -230,7 +230,7 @@ stimuli:
     prompt: My .NET 8 app is running in a Kubernetes pod on Linux and I have high CPU. I can exec into the container. What's
       the best way to collect a CPU trace?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (dotnet-trace|dotnet trace)
       - type: prompt
@@ -243,7 +243,7 @@ stimuli:
     prompt: I need to collect a CPU trace from my .NET 8 app running in a Linux container that is experiencing high CPU, but
       the container image doesn't have the .NET SDK installed. How can I get dotnet-trace into the container?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (aka.ms|curl|wget)
       - type: prompt
@@ -258,10 +258,10 @@ stimuli:
       we're seeing intermittent HTTP 500 responses from that downstream service. I need to understand which requests are
       failing and how long they're taking. What trace should I collect?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (dotnet-trace|dotnet trace)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: System\.Net\.Http
       - type: prompt
@@ -278,10 +278,10 @@ stimuli:
       Requests are timing out after 30 seconds. I have admin access. What's the best way to collect diagnostic data to
       understand what's happening at the networking level?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: PerfView
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: System\.Net
       - type: prompt
@@ -298,10 +298,10 @@ stimuli:
       plugin via a custom AssemblyLoadContext. How do I collect the right trace to diagnose what's going wrong with
       assembly loading?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (dotnet-trace|dotnet trace)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (assemblyloader|assembly.?load|loader|binder)
       - type: prompt

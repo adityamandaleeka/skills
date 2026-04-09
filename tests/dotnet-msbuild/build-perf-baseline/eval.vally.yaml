@@ -13,13 +13,13 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (baseline|cold.build|warm.build|no.op)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (redundant|transitive|unnecessary).*(reference|depend)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (GenerateDocumentationFile|RunAnalyzers|EnforceCodeStyleInBuild)
       - type: prompt

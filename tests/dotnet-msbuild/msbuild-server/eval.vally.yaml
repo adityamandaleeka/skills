@@ -13,7 +13,7 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (MSBUILDUSESERVER|MSBuild.?[Ss]erver|build.?server)
       - type: prompt

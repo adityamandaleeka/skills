@@ -12,16 +12,16 @@ stimuli:
       Show me how to register everything in MauiProgram.cs with the right
       lifetimes and explain why you chose each lifetime.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: AddSingleton
-      - type: output_contains
+      - type: output-contains
         config:
           substring: AddTransient
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)MauiProgram|CreateMauiApp
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)builder\.Services
       - type: prompt
@@ -38,13 +38,13 @@ stimuli:
       automatically? Show me the full wiring from MauiProgram.cs through
       route registration to the GoToAsync call.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: AddTransient
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)RegisterRoute|Routing
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: GoToAsync
       - type: prompt
@@ -60,16 +60,16 @@ stimuli:
       for Android, iOS, and Windows. How do I set this up in MauiProgram.cs so
       it doesn't break on any platform?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: "#if ANDROID"
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)IOS|MACCATALYST
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)WINDOWS
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)fallback|#else|all platform
       - type: prompt
@@ -85,13 +85,13 @@ stimuli:
       AddScoped in my MAUI app. My data seems to persist across page
       navigations when it shouldn't. What's going on?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)scoped?
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)singleton|single.?instance
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)(no|not|doesn.t|lacks|without).*(built.?in|request|http).*(scope|pipeline)
       - type: prompt

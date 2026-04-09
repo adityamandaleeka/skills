@@ -12,13 +12,13 @@ stimuli:
       and int FontSize. Convert this page to use compiled bindings and tell me
       how to catch binding errors at build time.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: x:DataType
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)SettingsViewModel
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: XC0022|XC0025|WarningsAsErrors
       - type: prompt
@@ -35,13 +35,13 @@ stimuli:
       and a LoadCommand that fetches data asynchronously. Show me how to
       implement this with proper change notification so bindings update the UI.
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)ObservableObject|INotifyPropertyChanged
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)ObservableProperty|PropertyChanged
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)RelayCommand|ICommand
       - type: prompt
@@ -59,13 +59,13 @@ stimuli:
       I want to display a different color for each status in a Label's TextColor.
       Show me how to create a value converter and wire it up in XAML.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: IValueConverter
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)Convert
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)StaticResource|x:Key
       - type: prompt
@@ -90,10 +90,10 @@ stimuli:
       ```
       What am I doing wrong?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)BindingContext
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)x:DataType
       - type: prompt

@@ -13,7 +13,7 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Task Performance Summary|task.?self.?time|wall.?clock|wait)
       - type: prompt

@@ -14,13 +14,13 @@ stimuli:
       on the device's system theme. Show me how to use AppThemeBinding to make
       this page theme-aware in XAML and explain the C# alternative.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: "AppThemeBinding"
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: "(?i)Light.*Dark"
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: "SetAppThemeColor|SetAppTheme"
       - type: prompt
@@ -37,13 +37,13 @@ stimuli:
       preferred theme from a settings page and it should apply immediately across
       the app. How do I set this up?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: "ResourceDictionary"
-      - type: output_contains
+      - type: output-contains
         config:
           substring: "DynamicResource"
-      - type: output_contains
+      - type: output-contains
         config:
           substring: "MergedDictionaries"
       - type: prompt
@@ -62,13 +62,13 @@ stimuli:
       theme change events? Also, how do I let the user force a specific theme
       regardless of system setting?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: "RequestedThemeChanged"
-      - type: output_contains
+      - type: output-contains
         config:
           substring: "UserAppTheme"
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: "RequestedTheme"
       - type: prompt
@@ -87,13 +87,13 @@ stimuli:
       when the user toggles dark mode in Android settings my app seems to restart
       completely. What am I doing wrong?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: "DynamicResource"
-      - type: output_contains
+      - type: output-contains
         config:
           substring: "StaticResource"
-      - type: output_contains
+      - type: output-contains
         config:
           substring: "UiMode"
       - type: prompt

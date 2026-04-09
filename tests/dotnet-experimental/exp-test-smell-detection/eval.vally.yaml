@@ -16,16 +16,16 @@ stimuli:
         - src: fixtures/smelly-tests/OrderService.Tests/OrderProcessorTests.cs
           dest: OrderService.Tests/OrderProcessorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (conditional|if.else|control flow|branch)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (no assert|assertion.free|without.*assert|zero assert|missing.*assert)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Thread\.Sleep|sleep|delay|sleepy)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -52,10 +52,10 @@ stimuli:
         - src: fixtures/clean-tests/Calculator.Tests/ScientificCalculatorTests.cs
           dest: Calculator.Tests/ScientificCalculatorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (clean|good|well.written|no.*(major|significant).*(smell|issue|problem)|solid|well.structured)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -76,13 +76,13 @@ stimuli:
         - src: fixtures/integration-tests/DataAccess.IntegrationTests/UserRepositoryIntegrationTests.cs
           dest: DataAccess.IntegrationTests/UserRepositoryIntegrationTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (integration|appropriate|expected|legitimate|acceptable)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Sleep|delay|sleepy|conditional|if.else|assert|no assert)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -104,7 +104,7 @@ stimuli:
         - src: ./fixtures/decline-request-to-write-new-tests-from-scratch/ShoppingCart.cs
           dest: ShoppingCart.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (TestMethod|TestClass|\[Fact\]|test)
       - type: prompt

@@ -12,16 +12,16 @@ stimuli:
       3. A custom counter metric for orders processed
       Show me the complete Program.cs setup and the service class. Don't create files.
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (OpenTelemetry\.Extensions\.Hosting|AddOpenTelemetry)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ActivitySource|StartActivity)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (AddOtlpExporter|UseOtlpExporter|OtlpExporter)
-      - type: output_not_contains
+      - type: output-not-contains
         config:
           substring: OpenTelemetry.Exporter.Console
       - type: prompt
@@ -45,16 +45,16 @@ stimuli:
       What NuGet packages do I need, and show me the complete Program.cs configuration?
       Don't create files.
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (AddOpenTelemetry|WithTracing|WithMetrics)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (AddOtlpExporter|UseOtlpExporter|OtlpExporter)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Logging|WithLogging|AddOpenTelemetry|TraceId|SpanId)
-      - type: output_not_contains
+      - type: output-not-contains
         config:
           substring: OpenTelemetry.Exporter.Console
       - type: prompt
@@ -75,10 +75,10 @@ stimuli:
       but I can't see the end-to-end distributed trace across the queue boundary.
       How do I propagate the trace context through message headers? Don't create files.
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Propagat|TextMapPropagator|Inject|Extract)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ActivitySource|StartActivity)
       - type: prompt

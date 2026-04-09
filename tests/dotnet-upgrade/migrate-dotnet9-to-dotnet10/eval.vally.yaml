@@ -19,13 +19,13 @@ stimuli:
 
       What breaks when migrating to .NET 10?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (System\.Linq\.Async|AsyncEnumerable)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (SIGTERM|PosixSignal|signal|ProcessExit)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (BufferedStream|WriteByte|[Ff]lush)
       - type: prompt
@@ -46,10 +46,10 @@ stimuli:
       ```
       After upgrading to .NET 10 / C# 14, this throws at runtime. What happened and how do I fix it?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (span|Span|MemoryExtensions|overload)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (IEnumerable|AsEnumerable|Enumerable\.Contains)
       - type: prompt
@@ -72,13 +72,13 @@ stimuli:
       - Has API endpoints that currently get redirected to the login page on 401
       What needs to change for .NET 10?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (WebHostBuilder|obsolete|WebApplication)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (WithOpenApi|deprecated|OpenAPI)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (IActionContextAccessor|obsolete)
       - type: prompt
@@ -148,13 +148,13 @@ stimuli:
 
       What changed and how do I fix each piece?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (OpenApiString|OpenApiAny|JsonNode|System\.Text\.Json)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (OpenApiSecurityScheme|Reference|OpenApiSecuritySchemeReference)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Nullable|nullable|removed|schema)
       - type: prompt
@@ -175,13 +175,13 @@ stimuli:
       - The project multi-targets net9.0 and net10.0, and we run `dotnet ef migrations add` without --framework
       What EF Core 10 breaking changes affect us?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (json|nvarchar|data type)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (parameterized|multiple parameters|OPENJSON|Contains)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (--framework|multi-target)
       - type: prompt
@@ -240,13 +240,13 @@ stimuli:
       ```
       What breaks in EF Core 10 and how do I fix each piece of code?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ExecuteUpdate|expression|lambda|Func)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (complex type|column name|uniquif|full path)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (logCommandText|diagnostics|logger|parameter)
       - type: prompt
@@ -264,10 +264,10 @@ stimuli:
       to REAL columns and reads timestamps with offsets using GetDateTime(). The app runs on machines in different
       timezones and we rely on the current local-timezone interpretation. What changes in .NET 10?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (UTC|timezone|time zone|offset)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (GetDateTimeOffset|GetDateTime|DateTimeOffset)
       - type: prompt
@@ -298,13 +298,13 @@ stimuli:
       - My BackgroundService does database seeding synchronously at the start of ExecuteAsync before the first await,
       and other services depend on the database being seeded. Will this still work?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (null|empty|array|\[\]|binding)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ProviderAlias|Abstractions|assembly)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (BackgroundService|ExecuteAsync|background thread|StartAsync)
       - type: prompt
@@ -329,16 +329,16 @@ stimuli:
       - Sets the DOTNET_SYSTEM_GLOBALIZATION_INVARIANT and old OpenSSL version override environment variables
       What do I need to change?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (OpenSSL|1\.1\.1|openssl)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (macOS|unsupported)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Rfc2898|SYSLIB0060|Pbkdf2)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (SecretKey|PrivateKey|renamed)
       - type: prompt
@@ -377,16 +377,16 @@ stimuli:
 
       What changed?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (NU1510|pruned|prune)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (deps\.json|runtime assets)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (SLNX|slnx|\.slnx|sln.*format)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (PackageReference|[Vv]ersion|error)
       - type: prompt
@@ -456,13 +456,13 @@ stimuli:
 
       What breaks?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (property name|conflict|\$type|discriminator|JsonIgnore|InvalidOperation)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (XmlSerializer|Obsolete|XmlIgnore)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (MailAddress|consecutive dots)
       - type: prompt
@@ -509,16 +509,16 @@ stimuli:
       The StatusStrip uses default rendering. TreeView has checkboxes.
       What do I need to fix in each code snippet?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (MenuItem|ContextMenu|disambiguate|ambiguous|fully qualified)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (OutOfMemoryException|ExternalException)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ColumnDefinitions|RowDefinitions|empty|disallowed|remove)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (DynamicResource|crash)
       - type: prompt
@@ -585,13 +585,13 @@ stimuli:
 
       What needs to change for .NET 10?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Ubuntu|Debian|container|aspnet:10)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (DllImport|AssemblyDirectory|single-file|System32)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (IDispatchEx|IReflect|cast|COM)
       - type: prompt
@@ -619,10 +619,10 @@ stimuli:
 
       What warnings or errors will I get?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (SYSLIB005[89]|NegotiatedCipherSuite|SslStream)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (SYSLIB006[012]|EventsThreadShutdown|MaxBy|EnableScript)
       - type: prompt
@@ -642,10 +642,10 @@ stimuli:
       - Has FilePatternMatch usage that checks if Stem is null
       What should we fix?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (InlineArray|StructLayout|explicit.*[Ss]ize|disallowed)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (NU1510|pruned|transitive|audit)
       - type: prompt
@@ -709,13 +709,13 @@ stimuli:
 
       What breaks in each case and how do I fix it?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (field|CS9272|CS9258|keyword|property accessor)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (extension|keyword|contextual|rename|@extension)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (enumerator|[Dd]ispos|MoveNext|false)
       - type: prompt
@@ -763,13 +763,13 @@ stimuli:
 
       What breaks in each case and how do I fix it? Note: the app also uses HTTP/3 to connect to our backend.
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (shift|mask|generic math|IShiftOperators|byte|sizeof)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (streaming|synchronous|Read|browser|HttpClient|async)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (HTTP/3|trim|PublishTrimmed|Http3Support)
       - type: prompt

@@ -132,19 +132,19 @@ stimuli:
       }
       ```
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (no assertion|missing assertion|never assert|does.?n.?t assert|no.*verif)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (swallow|catch.*return|exception.*silent|pass.*without)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Assert\.AreEqual.*itself|self.compar|always.pass|compare.*to itself)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Assert\.ThrowsException.*<Exception>|broad.*exception|specific.*exception)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -262,16 +262,16 @@ stimuli:
       }
       ```
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (static.*shared|shared.*state|_processedOrders|ordering|order.depend)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Thread\.Sleep|flak|timing|time.depend)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (reflect|private|internal.*state|implementation.*detail|coupling)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -371,13 +371,13 @@ stimuli:
       }
       ```
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (duplicat|repetit|data.?driven|DataRow|parameteriz)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (magic|unexplained|42|7|hard.?coded|unclear)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -454,14 +454,14 @@ stimuli:
       }
       ```
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (no (major|significant|critical|serious)|well.?written|good (shape|quality|structure)|clean|looks
             good|solid|few issues|minor)
-      - type: output_not_contains
+      - type: output-not-contains
         config:
           substring: no assertion
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:

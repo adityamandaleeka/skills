@@ -11,10 +11,10 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: file_exists
+      - type: file-exists
         config:
           path: "*.binlog"
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: "/bl:|-bl:"
       - type: prompt
@@ -31,10 +31,10 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: file_exists
+      - type: file-exists
         config:
           path: "*.binlog"
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (-bl:\{\{\}\}|/bl:\{\{\}\})
       - type: prompt
@@ -50,10 +50,10 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: file_exists
+      - type: file-exists
         config:
           path: "*.binlog"
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: "/bl:|-bl:"
       - type: prompt

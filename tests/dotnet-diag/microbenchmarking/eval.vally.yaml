@@ -18,11 +18,11 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: file_contains
+      - type: file-contains
         config:
           path: "**/*.csproj"
           value: BenchmarkDotNet
-      - type: file_exists
+      - type: file-exists
         config:
           path: "**/*-report*.md"
       - type: prompt

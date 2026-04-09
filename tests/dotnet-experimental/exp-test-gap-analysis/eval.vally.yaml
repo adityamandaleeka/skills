@@ -20,19 +20,19 @@ stimuli:
         - src: fixtures/boundary-gaps/PricingEngine.Tests/DiscountCalculatorTests.cs
           dest: PricingEngine.Tests/DiscountCalculatorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (boundar|off.by.one|>=.*>|>.*>=|threshold|exact.*(value|boundary|point)|edge)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (1000|500|100|250)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (surviv|not.*caught|not.*detected|would.*pass|miss|blind|gap|weak)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (express|heavy|10.*kg|coupon|minimum|floor|1\.00)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -59,19 +59,19 @@ stimuli:
         - src: fixtures/logic-gaps/AccessControl.Tests/AccessCheckerTests.cs
           dest: AccessControl.Tests/AccessCheckerTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Guest|guest|denied|no.access)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (write|CanWrite|writeAccess)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (null|empty|token|elevat)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (surviv|not.*caught|not.*detected|gap|miss|blind|weak)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -96,10 +96,10 @@ stimuli:
         - src: fixtures/well-tested/Inventory.Tests/StockManagerTests.cs
           dest: Inventory.Tests/StockManagerTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (strong|solid|good|well.tested|thorough|effective|high.*kill|most.*killed|most.*caught)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -119,7 +119,7 @@ stimuli:
         - src: ./fixtures/decline-request-to-write-new-tests-from-scratch/ShoppingCart.cs
           dest: ShoppingCart.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (TestMethod|TestClass|\[Fact\]|test)
       - type: prompt

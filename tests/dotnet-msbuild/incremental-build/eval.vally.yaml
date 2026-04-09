@@ -12,10 +12,10 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Inputs
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Outputs
       - type: prompt

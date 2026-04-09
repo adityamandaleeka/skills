@@ -11,29 +11,29 @@ stimuli:
         - src: ./fixtures/validate-template-with-multiple-errors/.template.config/template.json
           dest: .template.config/template.json
     graders:
-      - type: exit_success
-      - type: output_contains
+      - type: exit-success
+      - type: output-contains
         config:
           substring: identity
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)shortName.*(restore|conflict|reserved|CLI)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)(net7\.0|default.*not in|not.*valid.*choice)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)((enableLogging|yes).*(bool|boolean).*(invalid|not\s+valid|must\s+be|expected)|(enableLogging|yes).*(invalid|not\s+valid|must\s+be|expected).*(bool|boolean))
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)((maxRetries|abc).*(int|integer).*(invalid|not\s+valid|must\s+be|expected)|(maxRetries|abc).*(invalid|not\s+valid|must\s+be|expected).*(int|integer))
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)computed.*(missing|no).*value
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)generated.*(missing|no).*generator
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)(actionId|post.?action).*(missing|required|no)
       - type: prompt
@@ -57,11 +57,11 @@ stimuli:
         - src: ./fixtures/validate-correct-template-and-suggest-improvements/.template.config/template.json
           dest: .template.config/template.json
     graders:
-      - type: exit_success
-      - type: output_matches
+      - type: exit-success
+      - type: output-matches
         config:
           pattern: (?i)(no errors?\b|0 errors?\b|template (is|looks) (valid|good)|ready to publish|no issues? (found|identified)?)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)\b(identity|shortName|name)\b
       - type: prompt

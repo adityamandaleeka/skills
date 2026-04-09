@@ -12,10 +12,10 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (serial|sequential|chain)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Core|Api|Web|Tests)
       - type: prompt

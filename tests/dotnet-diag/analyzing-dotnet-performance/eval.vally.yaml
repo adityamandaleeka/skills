@@ -12,13 +12,13 @@ stimuli:
         - src: fixtures/inflector-and-regex.cs
           dest: CaseTransformExtensions.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Compiled
-      - type: output_contains
+      - type: output-contains
         config:
           substring: ToLower
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -37,13 +37,13 @@ stimuli:
         - src: fixtures/vocabulary-and-inflections.cs
           dest: WordVocabulary.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Ordinal
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Compiled
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -59,13 +59,13 @@ stimuli:
         - src: fixtures/number-converter-farsi-kurdish.cs
           dest: NumberConverters.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Dictionary
-      - type: output_contains
+      - type: output-contains
         config:
           substring: static
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -83,13 +83,13 @@ stimuli:
         - src: fixtures/number-converter-greek.cs
           dest: GreekConverter.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: ToLower
-      - type: output_contains
+      - type: output-contains
         config:
           substring: allocation
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -106,13 +106,13 @@ stimuli:
         - src: fixtures/number-converter-multi-locale.cs
           dest: MultiLocaleConverters.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Ordinal
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Dictionary
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -130,13 +130,13 @@ stimuli:
         - src: fixtures/metric-numeral-extensions.cs
           dest: MetricNumerals.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Aggregate
-      - type: output_contains
+      - type: output-contains
         config:
           substring: IEquatable
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -153,10 +153,10 @@ stimuli:
         - src: fixtures/byte-size-formatting.cs
           dest: DataSize.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Replace
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -172,13 +172,13 @@ stimuli:
         - src: fixtures/string-humanize-and-dehumanize.cs
           dest: StringReadability.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: LINQ
-      - type: output_contains
+      - type: output-contains
         config:
           substring: All
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -196,10 +196,10 @@ stimuli:
         - src: fixtures/timespan-and-collection-formatters.cs
           dest: TimeSpanFormatting.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Where
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -216,10 +216,10 @@ stimuli:
         - src: fixtures/truncation-and-span.cs
           dest: Truncation.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: TrimEnd
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -235,10 +235,10 @@ stimuli:
         - src: fixtures/unsealed-classes.cs
           dest: Locales.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: sealed
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:

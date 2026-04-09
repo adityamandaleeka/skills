@@ -12,7 +12,7 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (RunAnalyzers|analyzer|Analyzer)
       - type: prompt

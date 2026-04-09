@@ -28,20 +28,20 @@ stimuli:
         - src: ./fixtures/enable-nrt-in-a-small-library-with-mixed-nullability/TaskManager/Services/CsvExporter.cs
           dest: TaskManager/Services/CsvExporter.cs
     graders:
-      - type: exit_success
-      - type: file_contains
+      - type: exit-success
+      - type: file-contains
         config:
           path: TaskManager/TaskManager.csproj
           value: <Nullable>enable</Nullable>
-      - type: file_contains
+      - type: file-contains
         config:
           path: TaskManager/Services/ITaskRepository.cs
           value: TaskItem?
-      - type: file_contains
+      - type: file-contains
         config:
           path: TaskManager/Models/Project.cs
           value: TaskItem?
-      - type: file_contains
+      - type: file-contains
         config:
           path: TaskManager/Services/TaskService.cs
           value: string?
@@ -79,20 +79,20 @@ stimuli:
         - src: ./fixtures/file-by-file-migration-only-modify-the-targeted-file/FileByFile/NotificationService.cs
           dest: FileByFile/NotificationService.cs
     graders:
-      - type: exit_success
-      - type: file_not_contains
+      - type: exit-success
+      - type: file-not-contains
         config:
           path: FileByFile/UserProfile.cs
           value: "#nullable disable"
-      - type: file_contains
+      - type: file-contains
         config:
           path: FileByFile/UserProfile.cs
           value: string?
-      - type: file_contains
+      - type: file-contains
         config:
           path: FileByFile/OrderProcessor.cs
           value: "#nullable disable"
-      - type: file_contains
+      - type: file-contains
         config:
           path: FileByFile/NotificationService.cs
           value: "#nullable disable"
@@ -130,16 +130,16 @@ stimuli:
         - src: ./fixtures/enable-nrt-in-asp-net-core-web-api-with-ef-core/BookStore/Program.cs
           dest: BookStore/Program.cs
     graders:
-      - type: exit_success
-      - type: file_contains
+      - type: exit-success
+      - type: file-contains
         config:
           path: BookStore/BookStore.csproj
           value: <Nullable>enable</Nullable>
-      - type: file_contains
+      - type: file-contains
         config:
           path: BookStore/Models/Book.cs
           value: Category?
-      - type: file_contains
+      - type: file-contains
         config:
           path: BookStore/Dtos/BookDto.cs
           value: string?

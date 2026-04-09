@@ -7,11 +7,11 @@ stimuli:
   - name: Create a console application
     prompt: Create a new .NET console application called MyConsoleApp in the ./test-output directory
     graders:
-      - type: exit_success
-      - type: output_contains
+      - type: exit-success
+      - type: output-contains
         config:
           substring: MyConsoleApp
-      - type: file_exists
+      - type: file-exists
         config:
           path: test-output/MyConsoleApp/MyConsoleApp.csproj
       - type: prompt

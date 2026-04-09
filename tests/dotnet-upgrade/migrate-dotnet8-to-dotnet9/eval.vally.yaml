@@ -23,13 +23,13 @@ stimuli:
         - src: ./fixtures/app-with-empty-environment-variables-zip-encoding-and-keyed-/Startup.cs
           dest: Startup.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (empty.*env|null.*empty|SetEnvironmentVariable|string\.IsNullOrEmpty)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ZipArchive|UTF.?8|encoding|Shift.?JIS|flag)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (keyed|non-keyed|FromKeyedServices|InvalidOperationException|fallback)
       - type: prompt
@@ -90,13 +90,13 @@ stimuli:
 
       Migrate this code to .NET 9 / C# 13. What breaks in each case and how do I fix it?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (InlineArray|record struct|CS9259|struct)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (iterator|safe context|unsafe|local function)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (collection expression|overload|\[\]|ambig)
       - type: prompt
@@ -122,13 +122,13 @@ stimuli:
         - src: ./fixtures/asp-net-core-app-with-di-validation-forwarded-headers-and-ht/Program.cs
           dest: Program.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ValidateOnBuild|ValidateScopes|development|DI|scope)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (ForwardedHeaders|KnownProxies|unknown prox)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (SocketsHttpHandler|HttpClientHandler|InvalidCastException|primary handler)
       - type: prompt
@@ -159,13 +159,13 @@ stimuli:
         - src: ./fixtures/ef-core-app-with-migration-patterns-and-cosmos-db-discrimina/MigrationRunner.cs
           dest: MigrationRunner.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (explicit transaction|MigrateAsync|BeginTransaction)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (pending.*model|HasData|DateTime|non-deterministic)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (\$type|Discriminator|discriminator)
       - type: prompt
@@ -195,13 +195,13 @@ stimuli:
         - src: ./fixtures/ef-core-cosmos-db-app-with-existing-documents-and-composite-/CosmosQuery.cs
           dest: CosmosQuery.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (\$type|Discriminator|discriminator.*renamed|HasDiscriminator)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (id.*format|Product\|123|composite|no longer contain)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (HasIndex|throws|not supported|Cosmos)
       - type: prompt
@@ -231,13 +231,13 @@ stimuli:
         - src: ./fixtures/app-with-jsondocument-null-deserialization-and-binaryformatt/ApiClient.cs
           dest: ApiClient.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (JsonDocument|null|JsonValueKind\.Null|non-null)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (BinaryFormatter|NotSupportedException|always throws)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (UserAgent|nullable|null check|string\?)
       - type: prompt
@@ -265,13 +265,13 @@ stimuli:
         - src: ./fixtures/ci-pipeline-with-terminal-logger-parsing-and-version-constra/ci-build.sh
           dest: ci-build.sh
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Terminal Logger|--tl|MSBUILDTERMINALLOGGER|console.*output)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (17\.12|17\.11|Visual Studio|NETSDK1223)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (net7\.0|warning|.NET Standard|netstandard)
       - type: prompt
@@ -301,13 +301,13 @@ stimuli:
         - src: ./fixtures/winforms-app-with-custom-usercontrols-and-picturebox-url-loa/ImageLoader.cs
           dest: ImageLoader.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (WFO1000|security analyz|serialization|DesignerSerializationVisibility)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (PictureBox|HttpRequestException|WebException)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (StatusStrip|render|default)
       - type: prompt
@@ -339,13 +339,13 @@ stimuli:
         - src: ./fixtures/containerized-app-with-zlib-dependency-and-runtime-configura/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (zlib|no longer install|apt-get|zlib1g)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (environment variable|precedence|runtimeconfig|override)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (global\.json|SDK|9\.0)
       - type: prompt
@@ -375,13 +375,13 @@ stimuli:
         - src: ./fixtures/ef-core-cosmos-db-app-with-discriminator-and-sync-i-o/SyncJob.cs
           dest: SyncJob.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (\$type|Discriminator|discriminator.*renamed)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (sync|synchronous|SaveChanges|ToList|async)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (HasIndex|throws|ignored)
       - type: prompt
@@ -411,13 +411,13 @@ stimuli:
         - src: ./fixtures/library-with-string-trim-span-overload-keyed-services-and-in/ApiController.cs
           dest: ApiController.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Trim|ReadOnlySpan|char\[\]|removed|MissingMethodException)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (keyed|non-keyed|FromKeyedServices|InvalidOperationException)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (InlineArray|size|1 MiB|limit)
       - type: prompt
@@ -453,13 +453,13 @@ stimuli:
         - src: ./fixtures/containerized-app-with-env-var-precedence-reversal-and-zlib-/ImageProcessor.cs
           dest: ImageProcessor.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (environment variable|precedence|runtimeconfig|DOTNET_gcServer)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (zlib|no longer install|apt-get|zlib1g|SkiaSharp)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (workstation|server GC|GC.*mode|MinThreads.*4)
       - type: prompt

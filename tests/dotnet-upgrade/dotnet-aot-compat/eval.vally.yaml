@@ -11,7 +11,7 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: file_contains
+      - type: file-contains
         config:
           path: before/Azure.ResourceManager.csproj
           value: IsAotCompatible

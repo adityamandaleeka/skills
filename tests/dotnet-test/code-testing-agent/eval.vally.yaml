@@ -15,7 +15,7 @@ stimuli:
         - src: .
           dest: .
     graders:
-      - type: run_command
+      - type: run-command
         config:
           command: dotnet test ContosoUniversity.Tests/ContosoUniversity.Tests.csproj -v:q --collect:"XPlat Code Coverage"
           expected_exit_code: 0

@@ -17,13 +17,13 @@ stimuli:
         - src: ./fixtures/mstest-vstest/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (EnableMSTestRunner|MSTest\.Sdk)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (OutputType|Exe)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Directory\.Build\.props|centralize|shared)
       - type: prompt
@@ -48,13 +48,13 @@ stimuli:
         - src: ./fixtures/nunit-vstest/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (EnableNUnitRunner|NUnit.*runner)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (NUnit3TestAdapter|5\.0\.0|adapter.*5)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (OutputType|Exe)
       - type: prompt
@@ -76,10 +76,10 @@ stimuli:
         - src: ./fixtures/xunit-vstest/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (YTest\.MTP\.XUnit2|MTP.*xunit)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (PackageReference|package)
       - type: prompt
@@ -105,13 +105,13 @@ stimuli:
         - src: ./fixtures/mstest-ci-pipeline/azure-pipelines.yml
           dest: azure-pipelines.yml
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (DotNetCoreCLI|dotnet test)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (VSTest@3|replace|remove)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (report-trx|TrxReport)
       - type: prompt
@@ -133,10 +133,10 @@ stimuli:
         - src: ./fixtures/mstest-sdk-vstest/AppTests.cs
           dest: AppTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (UseVSTest|remove|delete)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (MSTest\.Sdk|MTP.*default)
       - type: prompt
@@ -161,16 +161,16 @@ stimuli:
         - src: ./fixtures/mstest-vstest/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (report-trx|--report-trx)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (--coverage|CodeCoverage)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (crashdump|--crashdump)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (hangdump|--hangdump)
       - type: prompt
@@ -197,7 +197,7 @@ stimuli:
         - src: ./fixtures/handle-exit-code-8-when-migrating-from-vstest-to-mtp/ConditionalTests.cs
           dest: ConditionalTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (exit.?code.?8|ignore-exit-code|zero.?test)
       - type: prompt
@@ -219,10 +219,10 @@ stimuli:
         - src: ./fixtures/configure-dotnet-test-mtp-mode-on-net-10-sdk/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (global\.json|test.*runner)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Microsoft\.Testing\.Platform|MTP)
       - type: prompt
@@ -244,7 +244,7 @@ stimuli:
         - src: ./fixtures/migrate-xunit-net-vstest-filter-syntax-to-mtp/IntegrationTests.cs
           dest: IntegrationTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (filter-class|filter-trait|filter-method|filter-query)
       - type: prompt
@@ -269,19 +269,19 @@ stimuli:
         - src: ./fixtures/mstest-vstest/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (EnableMSTestRunner|MSTest.*runner)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (OutputType|Exe)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Directory\.Build\.props|centralize)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (DotNetCoreCLI|VSTest@3|pipeline)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (TrxReport|report-trx)
       - type: prompt

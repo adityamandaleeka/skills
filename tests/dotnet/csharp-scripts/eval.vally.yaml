@@ -7,14 +7,14 @@ stimuli:
   - name: Test a C# language feature with a script
     prompt: Does C# support creating a stackalloc'd Span of native-sized integers? Can you test it and see?
     graders:
-      - type: exit_success
-      - type: output_matches
+      - type: exit-success
+      - type: output-matches
         config:
           pattern: (nint|nuint|native)
-      - type: output_contains
+      - type: output-contains
         config:
           substring: stackalloc
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: dotnet new console
       - type: prompt

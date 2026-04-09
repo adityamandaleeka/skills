@@ -17,16 +17,16 @@ stimuli:
       Write a C# class named NativeCompression that exposes a P/Invoke
       to call this function from a shared library called "compresslib".
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: LibraryImport
-      - type: output_contains
+      - type: output-contains
         config:
           substring: compresslib
-      - type: output_contains
+      - type: output-contains
         config:
           substring: nuint
-      - type: output_contains
+      - type: output-contains
         config:
           substring: static partial
       - type: prompt
@@ -49,16 +49,16 @@ stimuli:
       Write a C# class named NativeCompression that exposes a P/Invoke
       to call this function from a shared library called "compresslib".
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: DllImport
-      - type: output_contains
+      - type: output-contains
         config:
           substring: compresslib
-      - type: output_contains
+      - type: output-contains
         config:
           substring: UIntPtr
-      - type: output_contains
+      - type: output-contains
         config:
           substring: static extern
       - type: prompt

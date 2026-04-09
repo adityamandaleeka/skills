@@ -16,13 +16,13 @@ stimuli:
         - src: ./fixtures/suggest-hot-reload-for-failing-test-in-mtp-project-sdk-9/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Microsoft\.Testing\.Extensions\.HotReload
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: TESTINGPLATFORM_HOTRELOAD_ENABLED
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet run
       - type: prompt
@@ -48,13 +48,13 @@ stimuli:
         - src: ./fixtures/suggest-hot-reload-for-failing-test-in-mtp-project-sdk-10/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Microsoft\.Testing\.Extensions\.HotReload
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: TESTINGPLATFORM_HOTRELOAD_ENABLED
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet run
       - type: prompt
@@ -80,13 +80,13 @@ stimuli:
         - src: ./fixtures/enable-hot-reload-when-package-already-installed/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: TESTINGPLATFORM_HOTRELOAD_ENABLED
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet run
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: dotnet add.*package.*HotReload
       - type: prompt
@@ -112,13 +112,13 @@ stimuli:
         - src: ./fixtures/suggest-launchsettings-json-configuration-for-hot-reload/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: launchSettings\.json
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: TESTINGPLATFORM_HOTRELOAD_ENABLED
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Microsoft\.Testing\.Extensions\.HotReload
       - type: prompt
@@ -143,10 +143,10 @@ stimuli:
         - src: ./fixtures/use-dotnet-run-not-dotnet-test-for-hot-reload/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet run
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: console mode
       - type: prompt
@@ -168,10 +168,10 @@ stimuli:
         - src: ./fixtures/negative-vstest-project-cannot-use-mtp-hot-reload/ShippingCalculatorTests.cs
           dest: ShippingCalculatorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (VSTest|not.*MTP|not.*Microsoft\.Testing\.Platform|migrate|upgrade)
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: TESTINGPLATFORM_HOTRELOAD_ENABLED
       - type: prompt
@@ -196,13 +196,13 @@ stimuli:
         - src: ./fixtures/run-specific-failing-test-with-hot-reload-filter/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet run
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --filter
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: ProcessPayment_NegativeAmount
       - type: prompt

@@ -21,13 +21,13 @@ stimuli:
         - src: fixtures/partial-coverage/coverage.cobertura.xml
           dest: TestResults/coverage.cobertura.xml
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: CRAP|crap
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: CalculateGpa|Calculate_?Gpa
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: hotspot|risk|coverage
       - type: prompt
@@ -54,13 +54,13 @@ stimuli:
         - src: fixtures/shared/ContosoUniversity.UnitTests/StudentServiceTests.cs
           dest: ContosoUniversity.UnitTests/StudentServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet test
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: coverage
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: CRAP|crap|hotspot|risk
       - type: prompt
@@ -90,10 +90,10 @@ stimuli:
         - src: fixtures/plateau/coverage.cobertura.xml
           dest: TestResults/coverage.cobertura.xml
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: CalculateGpa|Calculate_?Gpa
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: 0%|uncovered|untested|no coverage
       - type: prompt

@@ -13,10 +13,10 @@ stimuli:
         - src: fixtures/vstest-mstest/OrderServiceTests.cs
           dest: OrderServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet test
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -38,13 +38,13 @@ stimuli:
         - src: fixtures/mtp-mstest-sdk9/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet test
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --\s+--report-trx
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -67,16 +67,16 @@ stimuli:
         - src: fixtures/mtp-mstest-sdk10/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet test
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: blame-hang
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: -- --blame
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -94,13 +94,13 @@ stimuli:
         - src: fixtures/multi-tfm/TestProject.csproj
           dest: TestProject.csproj
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet test
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --framework\s+net9\.0
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -119,13 +119,13 @@ stimuli:
         - src: fixtures/vstest-mstest/OrderServiceTests.cs
           dest: OrderServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --filter
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: TestCategory=Integration
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -145,13 +145,13 @@ stimuli:
         - src: fixtures/vstest-nunit/ReportServiceTests.cs
           dest: ReportServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --filter
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (FullyQualifiedName~ReportExporterTests|ClassName=.*ReportExporterTests)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -173,13 +173,13 @@ stimuli:
         - src: fixtures/mtp-xunit-v3/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --filter-class
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: ShoppingCartTests
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -201,13 +201,13 @@ stimuli:
         - src: fixtures/mtp-xunit-v3/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --filter-trait
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Category=Integration
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -227,13 +227,13 @@ stimuli:
         - src: fixtures/mtp-tunit/NotificationTests.cs
           dest: NotificationTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --treenode-filter
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: SmsNotificationTests
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -254,19 +254,19 @@ stimuli:
         - src: fixtures/vstest-mstest/OrderServiceTests.cs
           dest: OrderServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --filter
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: TestCategory=Unit
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: OrderServiceTests
-      - type: output_contains
+      - type: output-contains
         config:
           substring: "&"
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -288,13 +288,13 @@ stimuli:
         - src: fixtures/mtp-mstest-sdk9/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet test
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --\s+--blame-crash
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -316,16 +316,16 @@ stimuli:
         - src: fixtures/mtp-mstest-sdk10/global.json
           dest: global.json
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet test
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --report-trx
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: -- --report-trx
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -349,16 +349,16 @@ stimuli:
         - src: ./fixtures/detect-test-platform-from-directory-build-props/ServiceTests.cs
           dest: ServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (MTP|Microsoft\.Testing\.Platform|TestingPlatformDotnetTestSupport)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --filter.*TestCategory=Integration
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: -- --filter
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -379,16 +379,16 @@ stimuli:
         - src: fixtures/vstest-mstest/OrderServiceTests.cs
           dest: OrderServiceTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: dotnet test
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: --logger.*(trx|"trx")
-      - type: output_not_contains
+      - type: output-not-contains
         config:
           substring: --report-trx
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:

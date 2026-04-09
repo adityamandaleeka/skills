@@ -12,16 +12,16 @@ stimuli:
       Show me how to set up AppShell.xaml with this structure, including route
       registration for a ProductDetailsPage that I'll navigate to from the list.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: FlyoutItem
-      - type: output_contains
+      - type: output-contains
         config:
           substring: ContentTemplate
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Routing\.RegisterRoute
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)ShellContent
       - type: prompt
@@ -39,16 +39,16 @@ stimuli:
       Show me both approaches and how to receive the data on the target page
       using IQueryAttributable on my ViewModel.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: GoToAsync
-      - type: output_contains
+      - type: output-contains
         config:
           substring: IQueryAttributable
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: ShellNavigationQueryParameters
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: ApplyQueryAttributes
       - type: prompt
@@ -67,16 +67,16 @@ stimuli:
          default back arrow.
       How do I implement this in .NET MAUI Shell?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)OnNavigating|ShellNavigatingEventArgs
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: GetDeferral
-      - type: output_contains
+      - type: output-contains
         config:
           substring: BackButtonBehavior
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)args\.Cancel|Cancel\(\)
       - type: prompt
@@ -94,13 +94,13 @@ stimuli:
       3. My app takes 3 seconds to start and I have 12 pages in Shell
       What's likely wrong in each case and how do I fix them?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)RegisterRoute|register.*route
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)hierarchy|absolute.*route|path
-      - type: output_contains
+      - type: output-contains
         config:
           substring: ContentTemplate
       - type: prompt

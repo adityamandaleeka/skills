@@ -11,10 +11,10 @@ stimuli:
       and save them to an "uploads" folder. My app already has UseAntiforgery() in the pipeline.
       Show me the complete implementation including size limits configuration and the endpoint.
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (IFormFile|IFormFileCollection)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Guid\.NewGuid|Path\.GetRandomFileName)
       - type: prompt
@@ -33,10 +33,10 @@ stimuli:
       the same form submission. The total size can be up to 50MB. Just show me
       the code — I don't need a full project.
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (IFormFileCollection|IFormFile|List<IFormFile>)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (MaxRequestBodySize|MultipartBodyLengthLimit)
       - type: prompt
@@ -52,10 +52,10 @@ stimuli:
       Using IFormFile crashes with out-of-memory errors for files over 500MB.
       How do I stream large uploads directly to disk without buffering the whole file?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (MultipartReader|ReadNextSectionAsync)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (DisableRequestSizeLimit|MaxRequestBodySize)
       - type: prompt

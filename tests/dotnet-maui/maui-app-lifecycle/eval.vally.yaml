@@ -10,13 +10,13 @@ stimuli:
       text when the app goes to the background and restore it when the app comes
       back. Show me how to do this properly.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: OnStopped
-      - type: output_contains
+      - type: output-contains
         config:
           substring: OnResumed
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)preferences\.set
       - type: prompt
@@ -31,10 +31,10 @@ stimuli:
       How do I subscribe to all the Window lifecycle events in my .NET MAUI app?
       I want to log each transition for debugging purposes.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: CreateWindow
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)(?=.*(created|activated))(?=.*(stopped|destroying))(?=.*(resumed|deactivated))
       - type: prompt
@@ -49,10 +49,10 @@ stimuli:
       and iOS (DidEnterBackground). How do I hook into these platform-specific
       lifecycle events in .NET MAUI?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: ConfigureLifecycleEvents
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)AddAndroid|AddiOS
       - type: prompt
@@ -66,10 +66,10 @@ stimuli:
       I'm migrating from Xamarin.Forms to .NET MAUI. I used to override OnStart,
       OnSleep, and OnResume in my Application class. What's the equivalent in MAUI?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)window.*(lifecycle|event)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (?i)(OnActivated|OnStopped|OnResumed)
       - type: prompt

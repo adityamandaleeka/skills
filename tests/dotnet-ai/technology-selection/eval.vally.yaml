@@ -18,16 +18,16 @@ stimuli:
         - src: ./fixtures/ml-net-classification-on-tabular-data/TicketClassifier/Data/tickets.csv
           dest: TicketClassifier/Data/tickets.csv
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: MLContext
-      - type: output_contains
+      - type: output-contains
         config:
           substring: "new MLContext(seed:"
-      - type: output_contains
+      - type: output-contains
         config:
           substring: TrainTestSplit
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -49,19 +49,19 @@ stimuli:
         - src: ./fixtures/llm-integration-with-meai-abstraction/DocSummary/appsettings.json
           dest: DocSummary/appsettings.json
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: IChatClient
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Temperature
-      - type: output_not_contains
+      - type: output-not-contains
         config:
           substring: sk-
-      - type: output_not_contains
+      - type: output-not-contains
         config:
           substring: apiKey = "
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -84,10 +84,10 @@ stimuli:
         - src: ./fixtures/reject-llm-for-tabular-classification/ChurnPredictor/Data/customers.csv
           dest: ChurnPredictor/Data/customers.csv
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: ML.NET
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -105,16 +105,16 @@ stimuli:
         - src: ./fixtures/agentic-workflow-with-guardrails/ResearchAgent/Program.cs
           dest: ResearchAgent/Program.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: MaximumIterations
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Microsoft.Agents.AI
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Microsoft.Extensions.AI
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -137,10 +137,10 @@ stimuli:
         - src: ./fixtures/natural-language-scenario-decomposition-rag-chatbot/HelpChatbot/Docs/product-guide.pdf
           dest: HelpChatbot/Docs/product-guide.pdf
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Microsoft.Extensions.AI
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -172,13 +172,13 @@ stimuli:
         - src: ./fixtures/rag-pipeline-with-vector-search/ProductQA/Docs/configuration.md
           dest: ProductQA/Docs/configuration.md
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: chunk
-      - type: output_contains
+      - type: output-contains
         config:
           substring: embedding
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:

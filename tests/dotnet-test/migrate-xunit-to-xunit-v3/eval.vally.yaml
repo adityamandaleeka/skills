@@ -17,16 +17,16 @@ stimuli:
         - src: ./fixtures/migrate-basic-xunit-net-v2-project-to-v3/CalculatorTests.cs
           dest: CalculatorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: xunit\.v3
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: <OutputType>Exe</OutputType>
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: <IsTestingPlatformApplication>false</IsTestingPlatformApplication>
-      - type: run_command
+      - type: run-command
         config:
           command: dotnet test -p:TreatWarningsAsErrors=true
           expected_exit_code: 0
@@ -50,7 +50,7 @@ stimuli:
         - src: ./fixtures/detect-incompatible-target-framework-and-stop-migration/SampleTests.cs
           dest: SampleTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (4\.7\.2|net472|incompatible|not
             supported|cannot.{0,20}migrate|upgrade.{0,30}target.{0,10}framework|target.{0,10}framework.{0,30}upgrade)
@@ -72,13 +72,13 @@ stimuli:
         - src: ./fixtures/convert-async-void-test-methods-to-async-task/AsyncTests.cs
           dest: AsyncTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: async Task
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: async void
-      - type: run_command
+      - type: run-command
         config:
           command: dotnet test -p:TreatWarningsAsErrors=true
           expected_exit_code: 0
@@ -104,13 +104,13 @@ stimuli:
         - src: ./fixtures/convert-string-based-attribute-constructors-to-typeof-syntax/OrderedTests.cs
           dest: OrderedTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: typeof
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: CollectionBehavior\(\s*"MyApp
-      - type: run_command
+      - type: run-command
         config:
           command: dotnet test -p:TreatWarningsAsErrors=true
           expected_exit_code: 0
@@ -135,13 +135,13 @@ stimuli:
         - src: ./fixtures/update-custom-factattribute-to-include-source-information-pa/RetryTests.cs
           dest: RetryTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: CallerFilePath
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: CallerLineNumber
-      - type: run_command
+      - type: run-command
         config:
           command: dotnet test -p:TreatWarningsAsErrors=true
           expected_exit_code: 0
@@ -167,10 +167,10 @@ stimuli:
         - src: ./fixtures/update-beforeaftertestattribute-overrides-with-ixunittest-pa/DatabaseTests.cs
           dest: DatabaseTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: IXunitTest
-      - type: run_command
+      - type: run-command
         config:
           command: dotnet test -p:TreatWarningsAsErrors=true
           expected_exit_code: 0
@@ -196,16 +196,16 @@ stimuli:
         - src: ./fixtures/migrate-project-with-ytest-mtp-xunit2-to-xunit-net-v3-preser/BasicTests.cs
           dest: BasicTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: xunit\.v3
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: UseMicrosoftTestingPlatformRunner
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: IsTestingPlatformApplication.{0,5}false
-      - type: run_command
+      - type: run-command
         config:
           command: dotnet test -p:TreatWarningsAsErrors=true
           expected_exit_code: 0
@@ -229,13 +229,13 @@ stimuli:
         - src: ./fixtures/migrate-xunit-skippablefact-to-xunit-net-v3-built-in-skip-ap/ConditionalTests.cs
           dest: ConditionalTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Assert\.SkipWhen|Assert\.SkipUnless)
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: SkippableFact.{0,10}Version
-      - type: run_command
+      - type: run-command
         config:
           command: dotnet test -p:TreatWarningsAsErrors=true
           expected_exit_code: 0
@@ -263,13 +263,13 @@ stimuli:
         - src: ./fixtures/migrate-xunit-v2-packages-managed-via-central-package-manage/BasicTests.cs
           dest: BasicTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Directory\.Packages\.props|PackageVersion)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: xunit\.v3
-      - type: run_command
+      - type: run-command
         config:
           command: dotnet test -p:TreatWarningsAsErrors=true
           expected_exit_code: 0
@@ -293,10 +293,10 @@ stimuli:
         - src: ./fixtures/recognize-project-already-on-xunit-net-v3-no-migration-neede/ExistingTests.cs
           dest: ExistingTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (already|no.{0,30}migration|not.{0,20}need|already.{0,20}(v3|migrated|done))
-      - type: run_command
+      - type: run-command
         config:
           command: dotnet test -p:TreatWarningsAsErrors=true
           expected_exit_code: 0
@@ -321,13 +321,13 @@ stimuli:
         - src: ./fixtures/consolidate-xunit-extensibility-packages-and-remove-xunit-ab/CustomDiscoverer.cs
           dest: CustomDiscoverer.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: xunit\.v3\.extensibility
-      - type: output_not_matches
+      - type: output-not-matches
         config:
           pattern: using Xunit\.Abstractions;
-      - type: run_command
+      - type: run-command
         config:
           command: dotnet test -p:TreatWarningsAsErrors=true
           expected_exit_code: 0
@@ -352,10 +352,10 @@ stimuli:
         - src: ./fixtures/update-xunit-combinatorial-and-xunit-stafact-companion-packa/CombinatorialTests.cs
           dest: CombinatorialTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: xunit\.v3
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Combinatorial|combinatorial)
       - type: prompt

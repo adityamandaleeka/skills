@@ -21,14 +21,14 @@ stimuli:
         - src: fixtures/mstest-untagged/OrderService/OrderProcessor.cs
           dest: OrderService/OrderProcessor.cs
     graders:
-      - type: file_contains
+      - type: file-contains
         config:
           path: OrderService.Tests/OrderProcessorTests.cs
           value: TestCategory
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: positive|negative
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (distribution|summary|trait|count)
       - type: prompt
@@ -58,14 +58,14 @@ stimuli:
         - src: fixtures/xunit-untagged/OrderService/OrderProcessor.cs
           dest: OrderService/OrderProcessor.cs
     graders:
-      - type: file_contains
+      - type: file-contains
         config:
           path: OrderService.Tests/OrderProcessorTests.cs
           value: "[Trait("
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: positive|negative
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (distribution|summary|trait|count)
       - type: prompt
@@ -95,14 +95,14 @@ stimuli:
         - src: fixtures/nunit-untagged/OrderService/OrderProcessor.cs
           dest: OrderService/OrderProcessor.cs
     graders:
-      - type: file_contains
+      - type: file-contains
         config:
           path: OrderService.Tests/OrderProcessorTests.cs
           value: "[Category("
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: positive|negative
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (distribution|summary|trait|count)
       - type: prompt
@@ -132,10 +132,10 @@ stimuli:
         - src: fixtures/mstest-untagged/OrderService/OrderProcessor.cs
           dest: OrderService/OrderProcessor.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: positive|negative
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (boundary|edge|limit)
       - type: prompt
@@ -154,7 +154,7 @@ stimuli:
         - src: ./fixtures/decline-request-to-write-new-tests/PaymentGateway.cs
           dest: PaymentGateway.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (TestMethod|TestClass|\[Fact\]|test)
       - type: prompt

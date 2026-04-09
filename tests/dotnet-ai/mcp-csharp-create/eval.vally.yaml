@@ -11,10 +11,10 @@ stimuli:
       with proper attributes for LLM discovery. Show me the tool class, Program.cs
       with stdio transport, and explain how DI works for MCP tools.
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: \[McpServerTool[\],\(]
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (AddHttpClient|HttpClient)
       - type: prompt
@@ -31,13 +31,13 @@ stimuli:
       a resource that returns configuration data). Show me how to set up the
       HTTP transport with MapMcp and implement a resource.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: MapMcp
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (WithHttpTransport|ModelContextProtocol\.AspNetCore)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (McpServerResource|McpServerResourceType)
       - type: prompt
@@ -54,13 +54,13 @@ stimuli:
       template for summarization. Make sure logging doesn't interfere with the
       stdio JSON-RPC protocol.
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: \[McpServerTool[\]T,\(]
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (McpServerPrompt|McpServerPromptType)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (LogToStandardErrorThreshold|stderr)
       - type: prompt

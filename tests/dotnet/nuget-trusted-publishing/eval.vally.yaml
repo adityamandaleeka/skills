@@ -10,13 +10,13 @@ stimuli:
       to nuget.org using trusted publishing (OIDC) instead of an API key.
       The repo is hosted on GitHub at myorg/mylib. Help me set this up.
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: NuGet/login
-      - type: output_contains
+      - type: output-contains
         config:
           substring: id-token
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (trusted.?publishing|OIDC)
       - type: prompt
@@ -32,13 +32,13 @@ stimuli:
       to nuget.org securely from GitHub Actions without storing API keys.
       The repo is at myorg/mylib. How do I set this up?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: NuGet/login
-      - type: output_contains
+      - type: output-contains
         config:
           substring: id-token
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (trusted.?publishing|OIDC)
       - type: prompt
@@ -53,13 +53,13 @@ stimuli:
       My current publish workflow uses secrets.NUGET_API_KEY to push packages.
       I want to switch to NuGet trusted publishing (OIDC). What do I need to change?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: NuGet/login
-      - type: output_contains
+      - type: output-contains
         config:
           substring: id-token
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (api.?key|API.?KEY|NUGET_API_KEY)
       - type: prompt

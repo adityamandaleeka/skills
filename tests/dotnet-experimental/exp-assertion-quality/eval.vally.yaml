@@ -16,16 +16,16 @@ stimuli:
         - src: fixtures/low-diversity/PaymentService.Tests/PaymentProcessorTests.cs
           dest: PaymentService.Tests/PaymentProcessorTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (diversity|variety|spread|shallow|narrow|limited|homogeneous|repetitive)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (AreEqual|equality|equal)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (exception|throw|error|negative|missing)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -48,13 +48,13 @@ stimuli:
         - src: fixtures/assertion-free/SmokeTests/ApiEndpointSmokeTests.cs
           dest: SmokeTests/ApiEndpointSmokeTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (no assertion|zero assertion|assertion.free|without.*assert|missing.*assert|don.*assert|lack.*assert)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (5|five|62%|most|majority|several)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -76,10 +76,10 @@ stimuli:
         - src: fixtures/good-diversity/UserService.Tests/UserManagerTests.cs
           dest: UserService.Tests/UserManagerTests.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (good|strong|solid|diverse|well|thorough|comprehensive|varied)
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -100,7 +100,7 @@ stimuli:
         - src: ./fixtures/decline-request-to-write-new-tests-from-scratch/InventoryTracker.cs
           dest: InventoryTracker.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (TestMethod|TestClass|\[Fact\]|test)
       - type: prompt

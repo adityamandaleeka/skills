@@ -10,13 +10,13 @@ stimuli:
       I want to publish it to NuGet.org so users can install it as a
       dotnet tool. What do I need to configure?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: PackAsTool
-      - type: output_contains
+      - type: output-contains
         config:
           substring: dotnet pack
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (dotnet nuget push|nuget\.org)
       - type: prompt
@@ -32,13 +32,13 @@ stimuli:
       It uses environment variables for API keys. What's the best way
       to containerize and deploy it?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Dockerfile|docker)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Container Apps|containerapp)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (secret|Secret|KEY)
       - type: prompt
@@ -54,13 +54,13 @@ stimuli:
       register it in the official MCP Registry so it's discoverable.
       How do I do this?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: server.json
-      - type: output_contains
+      - type: output-contains
         config:
           substring: mcp-publisher
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: io\.github\.
       - type: prompt

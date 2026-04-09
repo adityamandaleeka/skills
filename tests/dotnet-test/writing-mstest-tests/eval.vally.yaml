@@ -11,16 +11,16 @@ stimuli:
         - src: ./fixtures
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: \[TestClass\]
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: \[TestMethod\]
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: \bsealed\b
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Assert\.ThrowsExactly|Assert\.Throws
       - type: prompt
@@ -41,13 +41,13 @@ stimuli:
         - src: ./fixtures
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: \[DataRow\]|\[DynamicData\]
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: \bsealed\b
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Assert\.ThrowsExactly|Assert\.Throws
       - type: prompt
@@ -84,13 +84,13 @@ stimuli:
         - src: ./fixtures
           dest: .
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: async Task
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: \[Timeout\]
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: CancellationToken
       - type: prompt
@@ -126,10 +126,10 @@ stimuli:
       }
       ```
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Assert\.AreEqual\(5
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Assert\.AreEqual\(0
       - type: prompt
@@ -154,13 +154,13 @@ stimuli:
         - src: fixtures/legacy-antipatterns/PriceCalculator.cs
           dest: PriceCalculator.cs
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: \bsealed\b
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Assert\.ThrowsExactly|Assert\.Throws
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: IsInstanceOfType
       - type: prompt
@@ -189,10 +189,10 @@ stimuli:
       }
       ```
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Assert\.ThrowsExactly|Assert\.Throws
-      - type: output_not_contains
+      - type: output-not-contains
         config:
           substring: "[ExpectedException]"
       - type: prompt
@@ -233,10 +233,10 @@ stimuli:
 
       ```
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: Assert\.HasCount|Assert\.AreEqual\(3
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: ContainsSingle|Assert\.IsNotNull
       - type: prompt
@@ -270,7 +270,7 @@ stimuli:
       }
       ```
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: IsInstanceOfType
       - type: prompt
@@ -294,13 +294,13 @@ stimuli:
         - src: fixtures/modern-mstest/TestProject.csproj
           dest: TestProject.csproj
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: constructor|\bctor\b
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: TestContext
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: \[TestInitialize\]|TestInitialize
       - type: prompt
@@ -335,10 +335,10 @@ stimuli:
       ];
       ```
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: ValueTuple|\(string.*bool\)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: IEnumerable<\(
       - type: prompt

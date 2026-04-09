@@ -13,7 +13,7 @@ stimuli:
         - src: fixtures/simd-tensor-primitives-minmax.cs
           dest: RangeCalculator.cs
     graders:
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -29,7 +29,7 @@ stimuli:
         - src: fixtures/simd-tensor-primitives-product.cs
           dest: MathOps.cs
     graders:
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -46,7 +46,7 @@ stimuli:
         - src: fixtures/simd-no-opportunity-catalog.cs
           dest: ProductCatalog.cs
     graders:
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -62,10 +62,10 @@ stimuli:
         - src: fixtures/simd-conditional-increment.cs
           dest: ConditionalIncrement.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Vector
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:
@@ -80,10 +80,10 @@ stimuli:
         - src: fixtures/simd-bit-reverser.cs
           dest: BitReverser.cs
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: Vector
-      - type: exit_success
+      - type: exit-success
       - type: prompt
       - type: pairwise
     rubric:

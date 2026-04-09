@@ -10,13 +10,13 @@ stimuli:
       I want to write tests that verify the tools work correctly without
       calling the real API. How do I structure the test project?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: xunit
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (Mock|Fake|mock|fake|HttpMessageHandler)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (CallToolAsync|McpClient)
       - type: prompt
@@ -32,10 +32,10 @@ stimuli:
       How do I write integration tests that test the full MCP protocol
       over HTTP without spinning up a real server?
     graders:
-      - type: output_contains
+      - type: output-contains
         config:
           substring: WebApplicationFactory
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (initialize|MCP|jsonrpc)
       - type: prompt
@@ -51,10 +51,10 @@ stimuli:
       I want to create evaluations to measure how well an LLM uses the tools.
       What format should I use and what makes a good evaluation question?
     graders:
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (evaluation|qa_pair|question.*answer)
-      - type: output_matches
+      - type: output-matches
         config:
           pattern: (read.only|non.destructive|deterministic|verifiable)
       - type: prompt
