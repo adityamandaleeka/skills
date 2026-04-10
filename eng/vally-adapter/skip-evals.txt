@@ -1,0 +1,4 @@
+# Evals to skip in local runs (one per line).
+# These are too slow or resource-intensive for routine local testing.
+# Override with SKIP_EVALS="" to run everything.
+code-testing-agent
