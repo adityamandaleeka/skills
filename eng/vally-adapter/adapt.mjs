@@ -240,12 +240,11 @@ function adapt(baselineOutcomes, skilledOutcomes, options) {
     });
   }
 
-  const allPassed = scenarios.every(
-    (s) => s.withSkill.metrics.assertionResults.every((a) => a.passed) && s.improvementScore >= 0,
-  );
+  const MIN_IMPROVEMENT = 0.10; // 10% threshold, matching skill-validator default
   const overallScore = scenarios.length > 0
     ? scenarios.reduce((sum, s) => sum + s.improvementScore, 0) / scenarios.length
     : 0;
+  const passed = overallScore >= MIN_IMPROVEMENT;
 
   return {
     model: options.model,
@@ -254,13 +253,13 @@ function adapt(baselineOutcomes, skilledOutcomes, options) {
     verdicts: [{
       skillName: options.skillName,
       skillPath: options.skillPath,
-      passed: allPassed,
+      passed,
       scenarios,
       overallImprovementScore: overallScore,
       normalizedGain: overallScore,
       confidenceInterval: { low: 0, high: 0, level: 0.95 },
       isSignificant: false,
-      reason: `Improvement score ${(overallScore * 100).toFixed(1)}% (vally shadow run)`,
+      reason: `Improvement score ${(overallScore * 100).toFixed(1)}% ${passed ? "meets" : "below"} threshold of ${(MIN_IMPROVEMENT * 100).toFixed(0)}% (vally shadow run)`,
       profileWarnings: [],
     }],
   };

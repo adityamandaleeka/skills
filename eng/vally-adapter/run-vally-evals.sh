@@ -3,8 +3,8 @@
 # run-vally-evals.sh — Run vally evaluations locally, mirroring the CI workflow.
 #
 # Usage:
-#   ./eng/vally-adapter/run-vally-evals.sh                        # all plugins
-#   ./eng/vally-adapter/run-vally-evals.sh dotnet-maui             # one plugin
+#   ./eng/vally-adapter/run-vally-evals.sh                        # all evals
+#   ./eng/vally-adapter/run-vally-evals.sh dotnet-maui             # one suite/plugin
 #   ./eng/vally-adapter/run-vally-evals.sh dotnet-maui maui-theming  # one skill
 #
 # Environment:
@@ -18,6 +18,7 @@
 # Prerequisites:
 #   - ~/code/evaluate built (npm ci && npm run build)
 #   - GITHUB_TOKEN set for Copilot SDK
+#   - .vally.yaml in repo root (discovery config)
 #
 # Results go to ./vally-results/<plugin>/<skill>/
 
@@ -51,16 +52,21 @@ if [ -z "${SKIP_EVALS+x}" ] && [ -f "$SKIP_FILE" ]; then
 fi
 SKIP_EVALS="${SKIP_EVALS:-}"
 
-# ---- Discover eval specs ---------------------------------------------------
+# ---- Discover evals ---------------------------------------------------------
+# .vally.yaml configures eval discovery (evalFilenames, paths).
+# We still use find here because we need the file list for parallel orchestration
+# of the baseline/skilled dual-run — vally's --suite runs end-to-end.
 
 if [ -n "$SKILL" ] && [ -n "$PLUGIN" ]; then
   ALL_SPECS=("$SKILLS_ROOT/tests/$PLUGIN/$SKILL/eval.vally.yaml")
 elif [ -n "$PLUGIN" ]; then
   ALL_SPECS=()
-  while IFS= read -r f; do ALL_SPECS+=("$f"); done < <(find "$SKILLS_ROOT/tests/$PLUGIN" -name "eval.vally.yaml" -type f | sort)
+  while IFS= read -r f; do ALL_SPECS+=("$f"); done \
+    < <(find "$SKILLS_ROOT/tests/$PLUGIN" -name "eval.vally.yaml" -type f | sort)
 else
   ALL_SPECS=()
-  while IFS= read -r f; do ALL_SPECS+=("$f"); done < <(find "$SKILLS_ROOT/tests" -name "eval.vally.yaml" -type f | sort)
+  while IFS= read -r f; do ALL_SPECS+=("$f"); done \
+    < <(find "$SKILLS_ROOT/tests" -name "eval.vally.yaml" -type f | sort)
 fi
 
 EVAL_SPECS=()
@@ -99,6 +105,8 @@ run_one_eval() {
   local SKILLED_DIR="$RESULTS_ROOT/$EVAL_PLUGIN/$EVAL_NAME/skilled"
   local LOG="$RESULTS_ROOT/$EVAL_PLUGIN/$EVAL_NAME/eval.log"
 
+  mkdir -p "$RESULTS_ROOT/$EVAL_PLUGIN/$EVAL_NAME"
+  rm -rf "$BASELINE_DIR" "$SKILLED_DIR"
   mkdir -p "$BASELINE_DIR" "$SKILLED_DIR"
 
   if [ ! -d "$SKILL_DIR" ]; then
@@ -115,6 +123,7 @@ run_one_eval() {
     echo "--- Baseline run ---"
     $VALLY eval \
       --eval-spec "$EVAL_SPEC" \
+      --model "$MODEL" \
       --runs "$RUNS" --workers "$WORKERS" \
       --skip-validate \
       --judge-model "$JUDGE_MODEL" \
@@ -126,6 +135,7 @@ run_one_eval() {
     $VALLY eval \
       --eval-spec "$EVAL_SPEC" \
       --skill-dir "$SKILL_DIR" \
+      --model "$MODEL" \
       --runs "$RUNS" --workers "$WORKERS" \
       --skip-validate \
       --judge-model "$JUDGE_MODEL" \
