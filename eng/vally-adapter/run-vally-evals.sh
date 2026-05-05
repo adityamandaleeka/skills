@@ -16,17 +16,15 @@
 #   SKIP_EVALS=""     Override skip list (default: reads skip-evals.txt)
 #
 # Prerequisites:
-#   - ~/code/evaluate built (npm ci && npm run build)
 #   - GITHUB_TOKEN set for Copilot SDK
-#   - .vally.yaml in repo root (discovery config)
+#   - @microsoft/vally-cli available (installed globally or via npx)
 #
 # Results go to ./vally-results/<plugin>/<skill>/
 
 set -euo pipefail
 
 SKILLS_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-EVALUATE_ROOT="${EVALUATE_ROOT:-$HOME/code/evaluate}"
-VALLY="npx --prefix $EVALUATE_ROOT tsx $EVALUATE_ROOT/packages/cli/src/index.ts"
+VALLY="${VALLY:-npx @microsoft/vally-cli}"
 RESULTS_ROOT="${RESULTS_DIR:-$SKILLS_ROOT/vally-results}"
 MODEL="${MODEL:-claude-sonnet-4.6}"
 JUDGE_MODEL="${JUDGE_MODEL:-claude-sonnet-4.6}"
@@ -178,7 +176,7 @@ run_one_eval() {
 }
 
 export -f run_one_eval
-export SKILLS_ROOT EVALUATE_ROOT VALLY RESULTS_ROOT MODEL JUDGE_MODEL RUNS WORKERS STATUS_DIR
+export SKILLS_ROOT VALLY RESULTS_ROOT MODEL JUDGE_MODEL RUNS WORKERS STATUS_DIR
 export GREEN RED YELLOW CYAN BOLD NC
 
 # ---- Run in parallel --------------------------------------------------------
