@@ -2,7 +2,7 @@ name: exp-mock-usage-analysis
 description: Evaluates the dotnet-experimental/exp-mock-usage-analysis skill
 type: capability
 config:
-  timeout: 180
+  timeout: 3m
 stimuli:
   - name: Detect unused and unreachable mock setups
     prompt: |

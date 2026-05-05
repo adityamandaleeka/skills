@@ -2,7 +2,7 @@ name: mcp-csharp-test
 description: Evaluates the dotnet-ai/mcp-csharp-test skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Write unit and integration tests for an MCP server
     prompt: |

@@ -2,7 +2,7 @@ name: exp-assertion-quality
 description: Evaluates the dotnet-experimental/exp-assertion-quality skill
 type: capability
 config:
-  timeout: 300
+  timeout: 5m
 stimuli:
   - name: Identify low assertion diversity in equality-dominated test suite
     prompt: |

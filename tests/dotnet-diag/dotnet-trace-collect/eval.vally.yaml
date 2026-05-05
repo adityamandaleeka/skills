@@ -2,7 +2,7 @@ name: dotnet-trace-collect
 description: Evaluates the dotnet-diag/dotnet-trace-collect skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: High CPU in Kubernetes on Linux (.NET 8)
     prompt: My ASP.NET Core application running on Linux in a Kubernetes pod is experiencing high CPU usage. I'm running

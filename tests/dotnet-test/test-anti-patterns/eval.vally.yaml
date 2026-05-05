@@ -2,7 +2,7 @@ name: test-anti-patterns
 description: Evaluates the dotnet-test/test-anti-patterns skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Detect mixed severity anti-patterns in repository service tests
     prompt: |

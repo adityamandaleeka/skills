@@ -2,7 +2,7 @@ name: dotnet-test-frameworks
 description: Evaluates the dotnet-test/dotnet-test-frameworks skill
 type: capability
 config:
-  timeout: 120s
+  timeout: 2m
 stimuli:
   - name: Cross-framework assertion equivalence mapping
     expect_activation: false

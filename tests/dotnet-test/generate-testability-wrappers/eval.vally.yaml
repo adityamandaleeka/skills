@@ -2,7 +2,7 @@ name: generate-testability-wrappers
 description: Evaluates the dotnet-test/generate-testability-wrappers skill
 type: capability
 config:
-  timeout: 240
+  timeout: 4m
 stimuli:
   - name: Generate TimeProvider adoption for DateTime.UtcNow
     prompt: >

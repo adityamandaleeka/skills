@@ -2,7 +2,7 @@ name: dotnet-pinvoke
 description: Evaluates the dotnet/dotnet-pinvoke skill
 type: capability
 config:
-  timeout: 60
+  timeout: 1m
 stimuli:
   - name: Generate LibraryImport declaration from C header (.NET 8+)
     prompt: |

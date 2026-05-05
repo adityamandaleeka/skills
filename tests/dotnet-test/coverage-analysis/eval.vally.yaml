@@ -2,7 +2,7 @@ name: coverage-analysis
 description: Evaluates the dotnet-test/coverage-analysis skill
 type: capability
 config:
-  timeout: 360
+  timeout: 6m
 stimuli:
   - name: Project-wide coverage analysis with existing Cobertura data
     prompt: Run coverage analysis on this project. Coverage data is already in TestResults/coverage.cobertura.xml.

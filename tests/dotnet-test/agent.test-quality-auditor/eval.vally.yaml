@@ -2,7 +2,7 @@ name: agent.test-quality-auditor
 description: Evaluates the dotnet-test/agent.test-quality-auditor orchestrator agent
 type: capability
 config:
-  timeout: 300s
+  timeout: 5m
 stimuli:
   - name: Comprehensive test quality audit of weak test suite
     prompt: |

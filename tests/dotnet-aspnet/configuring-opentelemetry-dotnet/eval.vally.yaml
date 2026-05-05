@@ -2,7 +2,7 @@ name: configuring-opentelemetry-dotnet
 description: Evaluates the dotnet-aspnet/configuring-opentelemetry-dotnet skill
 type: capability
 config:
-  timeout: 180
+  timeout: 3m
 stimuli:
   - name: Set up OpenTelemetry tracing and metrics with custom spans in ASP.NET Core
     prompt: |

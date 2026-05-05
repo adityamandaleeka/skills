@@ -2,7 +2,7 @@ name: build-parallelism
 description: Evaluates the dotnet-msbuild/build-parallelism skill
 type: capability
 config:
-  timeout: 160
+  timeout: 2m40s
 stimuli:
   - name: Analyze build parallelism bottlenecks
     prompt: Build this solution with parallel build enabled and analyze the build parallelism. Are there any bottlenecks in

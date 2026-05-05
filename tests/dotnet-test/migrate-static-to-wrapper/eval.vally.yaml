@@ -2,7 +2,7 @@ name: migrate-static-to-wrapper
 description: Evaluates the dotnet-test/migrate-static-to-wrapper skill
 type: capability
 config:
-  timeout: 180
+  timeout: 3m
 stimuli:
   - name: Migrate DateTime.UtcNow to TimeProvider in a service class
     prompt: >

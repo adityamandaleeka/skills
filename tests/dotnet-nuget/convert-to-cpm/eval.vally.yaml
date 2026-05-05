@@ -2,7 +2,7 @@ name: convert-to-cpm
 description: Evaluates the dotnet-nuget/convert-to-cpm skill
 type: capability
 config:
-  timeout: 600
+  timeout: 10m
 stimuli:
   - name: Decline CPM conversion for packages.config project
     prompt: Convert my simple-packages-config/LegacyApp project to Central Package Management.

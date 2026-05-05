@@ -2,7 +2,7 @@ name: template-authoring
 description: Evaluates the dotnet-template-engine/template-authoring skill
 type: capability
 config:
-  timeout: 300
+  timeout: 5m
 stimuli:
   - name: Validate a template.json file
     prompt: Validate the template.json file at .template.config/template.json and tell me if there are any issues

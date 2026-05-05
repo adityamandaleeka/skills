@@ -2,7 +2,7 @@ name: directory-build-organization
 description: Evaluates the dotnet-msbuild/directory-build-organization skill
 type: capability
 config:
-  timeout: 300
+  timeout: 5m
 stimuli:
   - name: Organize build infrastructure for a multi-project repo
     prompt: This .NET solution has grown organically and the build infrastructure needs attention. Review all project files

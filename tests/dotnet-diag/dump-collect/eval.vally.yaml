@@ -2,7 +2,7 @@ name: dump-collect
 description: Evaluates the dotnet-diag/dump-collect skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Configure automatic crash dumps for CoreCLR app on Linux
     prompt: |

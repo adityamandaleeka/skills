@@ -2,7 +2,7 @@ name: mcp-csharp-debug
 description: Evaluates the dotnet-ai/mcp-csharp-debug skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Debug an MCP server with MCP Inspector
     prompt: |

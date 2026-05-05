@@ -2,7 +2,7 @@ name: maui-app-lifecycle
 description: Evaluates the dotnet-maui/maui-app-lifecycle skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Save and restore state on background
     prompt: |

@@ -2,7 +2,7 @@ name: resolve-project-references
 description: Evaluates the dotnet-msbuild/resolve-project-references skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Explain misleading ResolveProjectReferences time
     prompt: Our team found that ResolveProjectReferences is the most expensive target in our build. Review the project

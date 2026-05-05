@@ -2,7 +2,7 @@ name: exp-simd-vectorization
 description: Evaluates the dotnet-experimental/exp-simd-vectorization skill
 type: capability
 config:
-  timeout: 180
+  timeout: 3m
 stimuli:
   - name: Optimize manual min/max with TensorPrimitives
     prompt: This .NET 10 project has a method that finds the minimum and maximum values in a float array. It's used in a

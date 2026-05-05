@@ -2,7 +2,7 @@ name: mcp-csharp-create
 description: Evaluates the dotnet-ai/mcp-csharp-create skill
 type: capability
 config:
-  timeout: 360
+  timeout: 6m
 stimuli:
   - name: Implement MCP tools with proper attributes and DI
     prompt: |

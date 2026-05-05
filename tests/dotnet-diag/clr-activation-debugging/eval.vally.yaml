@@ -2,7 +2,7 @@ name: clr-activation-debugging
 description: Evaluates the dotnet-diag/clr-activation-debugging skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Diagnose unexpected FOD dialog from native build tool
     prompt: |

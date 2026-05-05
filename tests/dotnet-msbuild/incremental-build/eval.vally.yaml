@@ -2,7 +2,7 @@ name: incremental-build
 description: Evaluates the dotnet-msbuild/incremental-build skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Analyze incremental build issues
     prompt: Analyze this project for incremental build issues. Identify any custom targets that would unnecessarily re-run

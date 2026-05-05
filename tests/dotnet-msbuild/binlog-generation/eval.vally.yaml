@@ -2,7 +2,7 @@ name: binlog-generation
 description: Evaluates the dotnet-msbuild/binlog-generation skill
 type: capability
 config:
-  timeout: 180
+  timeout: 3m
 stimuli:
   - name: Build project with /bl flag
     prompt: Build this project and create a binlog for diagnostic purposes.

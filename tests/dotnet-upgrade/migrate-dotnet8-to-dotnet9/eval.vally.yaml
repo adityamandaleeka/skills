@@ -2,7 +2,7 @@ name: migrate-dotnet8-to-dotnet9
 description: Evaluates the dotnet-upgrade/migrate-dotnet8-to-dotnet9 skill
 type: capability
 config:
-  timeout: 420
+  timeout: 7m
 stimuli:
   - name: App with empty environment variables, ZIP encoding, and keyed DI services
     prompt: |

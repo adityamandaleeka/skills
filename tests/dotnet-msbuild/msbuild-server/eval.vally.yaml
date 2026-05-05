@@ -2,7 +2,7 @@ name: msbuild-server
 description: Evaluates the dotnet-msbuild/msbuild-server skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Recommend MSBuild Server for slow CLI incremental builds
     prompt: A developer reports that CLI builds with 'dotnet build' are slow for incremental builds, even when nothing has

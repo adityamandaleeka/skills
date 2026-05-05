@@ -2,7 +2,7 @@ name: android-tombstone-symbolication
 description: Evaluates the dotnet-diag/android-tombstone-symbolication skill
 type: capability
 config:
-  timeout: 300
+  timeout: 5m
 stimuli:
   - name: Symbolicate .NET frames in an Android tombstone
     prompt: I have an Android tombstone file at tombstone_sample.txt from a crashed .NET MAUI app. Please symbolicate the

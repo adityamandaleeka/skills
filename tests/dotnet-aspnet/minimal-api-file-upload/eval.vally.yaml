@@ -2,7 +2,7 @@ name: minimal-api-file-upload
 description: Evaluates the dotnet-aspnet/minimal-api-file-upload skill
 type: capability
 config:
-  timeout: 180
+  timeout: 3m
 stimuli:
   - name: Implement secure file upload in ASP.NET Core 8 minimal API
     prompt: |

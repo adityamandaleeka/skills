@@ -2,7 +2,7 @@ name: optimizing-ef-core-queries
 description: Evaluates the dotnet-data/optimizing-ef-core-queries skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Optimize bulk operations with EF Core 7+ ExecuteUpdate and ExecuteDelete
     prompt: |

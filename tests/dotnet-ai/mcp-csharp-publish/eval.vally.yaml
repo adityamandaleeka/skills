@@ -2,7 +2,7 @@ name: mcp-csharp-publish
 description: Evaluates the dotnet-ai/mcp-csharp-publish skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Publish an MCP server as a NuGet tool package
     prompt: |

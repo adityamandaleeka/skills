@@ -2,7 +2,7 @@ name: exp-test-smell-detection
 description: Evaluates the dotnet-experimental/exp-test-smell-detection skill
 type: capability
 config:
-  timeout: 300
+  timeout: 5m
 stimuli:
   - name: Detect multiple test smells in order processing test suite
     prompt: |

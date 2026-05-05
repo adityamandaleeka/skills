@@ -2,7 +2,7 @@ name: csharp-scripts
 description: Evaluates the dotnet/csharp-scripts skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Test a C# language feature with a script
     prompt: Does C# support creating a stackalloc'd Span of native-sized integers? Can you test it and see?

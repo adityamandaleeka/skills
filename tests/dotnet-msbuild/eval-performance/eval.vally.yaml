@@ -2,7 +2,7 @@ name: eval-performance
 description: Evaluates the dotnet-msbuild/eval-performance skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Analyze MSBuild evaluation performance issues
     prompt: Analyze this project for MSBuild evaluation performance issues. What patterns are causing slow project evaluation?

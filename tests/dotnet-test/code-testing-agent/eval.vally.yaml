@@ -2,7 +2,7 @@ name: code-testing-agent
 description: Evaluates the dotnet-test/code-testing-agent skill
 type: capability
 config:
-  timeout: 2400s
+  timeout: 40m
 stimuli:
   - name: Generate tests for ContosoUniversity ASP.NET Core MVC app
     prompt: |
@@ -20,7 +20,7 @@ stimuli:
           command: dotnet test ContosoUniversity.Tests/ContosoUniversity.Tests.csproj -v:q --collect:"XPlat Code Coverage"
           expected_exit_code: 0
           stdout_contains: Passed!
-          timeout: 300s
+          timeout: 5m
       - type: prompt
       - type: pairwise
     rubric:

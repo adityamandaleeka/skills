@@ -2,7 +2,7 @@ name: agent.testability-migration
 description: Evaluates the dotnet-test/agent.testability-migration orchestrator agent
 type: capability
 config:
-  timeout: 300
+  timeout: 5m
 stimuli:
   - name: "Full pipeline: detect statics and recommend migration plan"
     prompt: >

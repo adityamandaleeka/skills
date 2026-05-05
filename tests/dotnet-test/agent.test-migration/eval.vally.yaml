@@ -2,7 +2,7 @@ name: agent.test-migration
 description: Evaluates the dotnet-test/agent.test-migration orchestrator agent
 type: capability
 config:
-  timeout: 300s
+  timeout: 5m
 stimuli:
   - name: Detect MSTest v2 on VSTest and recommend migration path
     prompt: |

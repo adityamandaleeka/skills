@@ -2,7 +2,7 @@ name: crap-score
 description: Evaluates the dotnet-test/crap-score skill
 type: capability
 config:
-  timeout: 360
+  timeout: 6m
 stimuli:
   - name: Calculate CRAP score for a single method with partial coverage
     prompt: Calculate the CRAP score for the ProcessOrder method in OrderService.cs. I already have coverage data in

@@ -2,7 +2,7 @@ name: binlog-failure-analysis
 description: Evaluates the dotnet-msbuild/binlog-failure-analysis skill
 type: capability
 config:
-  timeout: 360
+  timeout: 6m
 stimuli:
   - name: Diagnose build failures from binlog only (no source files)
     prompt: A .NET solution build has failed. The binary log from the failed build is available at build.binlog in the

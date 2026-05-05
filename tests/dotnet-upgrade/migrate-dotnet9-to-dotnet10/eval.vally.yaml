@@ -2,7 +2,7 @@ name: migrate-dotnet9-to-dotnet10
 description: Evaluates the dotnet-upgrade/migrate-dotnet9-to-dotnet10 skill
 type: capability
 config:
-  timeout: 240
+  timeout: 4m
 stimuli:
   - name: Console app with System.Linq.Async, SIGTERM, and BufferedStream
     prompt: >

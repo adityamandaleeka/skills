@@ -2,7 +2,7 @@ name: build-perf-baseline
 description: Evaluates the dotnet-msbuild/build-perf-baseline skill
 type: capability
 config:
-  timeout: 360
+  timeout: 6m
 stimuli:
   - name: Establish build performance baseline and recommend optimizations
     prompt: This .NET solution has build performance concerns. Build the solution, establish a build performance baseline,

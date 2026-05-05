@@ -2,7 +2,7 @@ name: exp-test-maintainability
 description: Evaluates the dotnet-experimental/exp-test-maintainability skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Recommend data-driven patterns with display names for unclear parameters
     prompt: |

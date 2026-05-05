@@ -2,7 +2,7 @@ name: system-text-json-net11
 description: Evaluates the dotnet11/system-text-json-net11 skill
 type: capability
 config:
-  timeout: 180s
+  timeout: 3m
 stimuli:
   - name: Serialize JSON in .NET 11 with PascalCase property names
     prompt: |

@@ -2,7 +2,7 @@ name: build-perf-diagnostics
 description: Evaluates the dotnet-msbuild/build-perf-diagnostics skill
 type: capability
 config:
-  timeout: 360
+  timeout: 6m
 stimuli:
   - name: Diagnose slow build for a small project
     prompt: This .NET project's build time is unacceptable for its size. Systematically diagnose where build time is being

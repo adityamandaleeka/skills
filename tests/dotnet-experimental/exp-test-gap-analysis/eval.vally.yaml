@@ -2,7 +2,7 @@ name: exp-test-gap-analysis
 description: Evaluates the dotnet-experimental/exp-test-gap-analysis skill
 type: capability
 config:
-  timeout: 300
+  timeout: 5m
 stimuli:
   - name: Find boundary mutation gaps in tiered discount and shipping logic
     prompt: |

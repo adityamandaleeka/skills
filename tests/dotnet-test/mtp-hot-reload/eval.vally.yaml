@@ -2,7 +2,7 @@ name: mtp-hot-reload
 description: Evaluates the dotnet-test/mtp-hot-reload skill
 type: capability
 config:
-  timeout: 360
+  timeout: 6m
 stimuli:
   - name: Suggest hot reload for failing test in MTP project (SDK 9)
     prompt: I have a failing test in ProcessPayment_NegativeAmount_ThrowsException and I want to iterate on the fix quickly

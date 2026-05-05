@@ -2,7 +2,7 @@ name: template-validation
 description: Evaluates the dotnet-template-engine/template-validation skill
 type: capability
 config:
-  timeout: 180
+  timeout: 3m
 stimuli:
   - name: Validate template with multiple errors
     prompt: Check this template.json for any issues. It's at .template.config/template.json

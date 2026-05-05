@@ -2,7 +2,7 @@ name: maui-safe-area
 description: Evaluates the dotnet-maui/maui-safe-area skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Handle notch and status bar safe areas on iOS
     prompt: |

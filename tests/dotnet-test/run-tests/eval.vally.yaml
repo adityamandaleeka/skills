@@ -2,7 +2,7 @@ name: run-tests
 description: Evaluates the dotnet-test/run-tests skill
 type: capability
 config:
-  timeout: 360
+  timeout: 6m
 stimuli:
   - name: Run tests in a VSTest MSTest project
     prompt: I need to run all the tests in this project. Can you help me?

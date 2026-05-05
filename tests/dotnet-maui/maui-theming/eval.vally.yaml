@@ -3,7 +3,7 @@ description: Validates the dotnet-maui/maui-theming skill for theme support in .
 type: capability
 
 config:
-  timeout: 120
+  timeout: 2m
 
 stimuli:
   - name: "Add light/dark mode support using AppThemeBinding"

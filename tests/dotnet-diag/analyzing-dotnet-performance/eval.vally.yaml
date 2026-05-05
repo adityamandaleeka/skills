@@ -2,7 +2,7 @@ name: analyzing-dotnet-performance
 description: Evaluates the dotnet-diag/analyzing-dotnet-performance skill
 type: capability
 config:
-  timeout: 180
+  timeout: 3m
 stimuli:
   - name: Detects compiled regex startup budget and regex chain allocations
     prompt: Analyze this string transformation library for .NET performance issues. The Underscore/Pascalize/Camelize

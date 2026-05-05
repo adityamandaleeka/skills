@@ -2,7 +2,7 @@ name: detect-static-dependencies
 description: Evaluates the dotnet-test/detect-static-dependencies skill
 type: capability
 config:
-  timeout: 120
+  timeout: 2m
 stimuli:
   - name: Identify static dependencies in a multi-class project
     prompt: >
