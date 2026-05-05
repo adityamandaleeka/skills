@@ -86,12 +86,8 @@ jobs:
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
-          registry-url: https://npm.pkg.github.com
-          scope: '@microsoft'
 
       - name: Install vally
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.EVALUATE_PACKAGES_TOKEN }}
         run: npm install -g @microsoft/vally-cli
 
       - name: Select Copilot token
@@ -147,6 +143,7 @@ jobs:
             echo "--- Baseline run ---"
             skill-validator eval \
               --eval-spec "$EVAL_SPEC" \
+              --model ${{ env.MODEL }} \
               --runs 1 --workers 3 \
               --skip-validate \
               --judge-model ${{ env.JUDGE_MODEL }} \
@@ -158,6 +155,7 @@ jobs:
             skill-validator eval \
               --eval-spec "$EVAL_SPEC" \
               --skill-dir "$SKILL_DIR" \
+              --model ${{ env.MODEL }} \
               --runs 1 --workers 3 \
               --skip-validate \
               --judge-model ${{ env.JUDGE_MODEL }} \
