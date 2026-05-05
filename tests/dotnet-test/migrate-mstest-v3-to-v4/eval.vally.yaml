@@ -2,7 +2,7 @@ name: migrate-mstest-v3-to-v4
 description: Evaluates the dotnet-test/migrate-mstest-v3-to-v4 skill
 type: capability
 config:
-  timeout: 240
+  timeout: 240s
 stimuli:
   - name: Migrate custom TestMethodAttribute from Execute to ExecuteAsync
     prompt: |
@@ -55,9 +55,9 @@ stimuli:
       - Mentions that the MSTEST0006 analyzer in MSTest 3.2+ could have caught this earlier
   - name: "Fix multiple v4 breaking changes: Assert, ClassCleanup, TestContext, Timeout"
     prompt: |
-      I upgraded from MSTest 3.8 to MSTest 4.0 and my test project has many compilation errors.
-      The errors mention ThrowsException, ClassCleanupBehavior, Contains, TestTimeout, and
-      IsInstanceOfType. Can you review my code and fix all breaking changes?
+      I upgraded from MSTest 3.8 to MSTest 4.0 and my test project has compilation errors.
+      The errors mention ThrowsException, ClassCleanupBehavior, and TestTimeout.
+      Can you review my code and fix the breaking changes?
     environment:
       files:
         - src: fixtures/v3-assert-changes/TestProject.csproj
@@ -73,7 +73,7 @@ stimuli:
           pattern: (ClassCleanup|ClassCleanupBehavior)
       - type: output-matches
         config:
-          pattern: (ContainsKey|IDictionary)
+          pattern: (TestTimeout|int\.MaxValue|Infinite)
       - type: prompt
       - type: pairwise
     rubric:
@@ -243,7 +243,7 @@ stimuli:
       - Identifies that TestContext.ManagedType is removed in v4 and recommends FullyQualifiedTestClassName
       - Identifies that TestTimeout.Infinite is removed and recommends int.MaxValue
       - Identifies that TestContext.Properties.Contains must become ContainsKey
-      - Notes the MSTest.Sdk version should be updated to 4.1.0
+      - Notes the project is using MSTest.Sdk/4.1.0 or confirms the SDK version upgrade
       - Mentions that MSTest.Sdk v4 no longer adds Microsoft.NET.Test.Sdk when using MTP
   - name: Correctly identify MSTest v3 project and recommend v4 migration
     prompt: |
@@ -271,3 +271,150 @@ stimuli:
       - Mentions other key v4 breaking changes beyond just ExpectedException (e.g., Assert API changes, TestCase.Id
         changes)
       - Does not suggest v1→v3 migration steps since the project is already on v3
+
+  - name: Verified MSTest v3 to v4 package update with build and test
+    prompt: |
+      I need to upgrade my test project from MSTest 3.8.0 to MSTest 4.x.
+      Please update the package references, fix any breaking changes, then
+      build the project and run the tests to make sure everything works.
+    environment:
+      files:
+        - src: fixtures/v3-verified-migration/TestProject.csproj
+          dest: TestProject.csproj
+        - src: fixtures/v3-verified-migration/OrderServiceTests.cs
+          dest: OrderServiceTests.cs
+    graders:
+      - type: file-contains
+        config:
+          path: TestProject.csproj
+          value: PackageReference Include="MSTest.TestFramework" Version="4.
+      - type: file-contains
+        config:
+          path: TestProject.csproj
+          value: PackageReference Include="MSTest.TestAdapter" Version="4.
+      - type: output-matches
+        config:
+          pattern: (dotnet build|dotnet test|build.*succeed|test.*pass)
+      - type: output-matches
+        config:
+          pattern: (int\.MaxValue|int\.Max)
+      - type: prompt
+      - type: pairwise
+    rubric:
+      - Updated MSTest package references from 3.8.0 to a 4.x version
+      - Fixed the TestTimeout.Infinite breaking change to int.MaxValue
+      - Built the project and confirmed zero compilation errors
+      - Ran the tests with dotnet test and confirmed all tests pass
+
+  - name: Fix sealed custom TestMethodAttribute with Timeout changes
+    prompt: |
+      After upgrading to MSTest 4.1.0, my test project fails to compile. I have a sealed
+      custom TestMethodAttribute subclass that overrides Execute, and several tests use
+      [Timeout(TestTimeout.Infinite)]. How do I fix these errors?
+    environment:
+      files:
+        - src: fixtures/v3-sealed-testmethod/TestProject.csproj
+          dest: TestProject.csproj
+        - src: fixtures/v3-sealed-testmethod/PerformanceTests.cs
+          dest: PerformanceTests.cs
+    graders:
+      - type: output-matches
+        config:
+          pattern: (ExecuteAsync|Execute.*Async)
+      - type: output-matches
+        config:
+          pattern: (Task<TestResult|Task<.*TestResult)
+      - type: output-matches
+        config:
+          pattern: (TestTimeout|int\.MaxValue|Infinite)
+      - type: prompt
+      - type: pairwise
+    rubric:
+      - Identifies Execute → ExecuteAsync breaking change and shows the async signature
+      - Shows how to propagate CallerInfo parameters to the base constructor in the sealed attribute
+      - Identifies TestTimeout.Infinite removal and recommends int.MaxValue
+      - Provides concrete fixed code for the sealed TimedTestMethodAttribute
+
+  - name: Fix TestMethodAttribute and TestMethod display name constructor
+    prompt: |
+      My MSTest v3 project uses [TestMethod("display name")] and
+      [TestMethodAttribute("display name")] to set custom display names on tests.
+      After upgrading to MSTest v4, these constructors no longer work because of
+      CallerInfo parameter changes. How should I update them?
+    environment:
+      files:
+        - src: fixtures/v3-testmethod-displayname/TestProject.csproj
+          dest: TestProject.csproj
+        - src: fixtures/v3-testmethod-displayname/AuthTests.cs
+          dest: AuthTests.cs
+    graders:
+      - type: output-matches
+        config:
+          pattern: (DisplayName|display.?name)
+      - type: output-matches
+        config:
+          pattern: (CallerFilePath|CallerLineNumber|caller.?info)
+      - type: prompt
+      - type: pairwise
+    rubric:
+      - Identifies that TestMethodAttribute constructor now uses CallerInfo parameters
+      - Shows the correct syntax: [TestMethod(DisplayName = "...")]
+      - Applies the fix to both [TestMethod("...")] and [TestMethodAttribute("...")] usages
+      - Provides corrected code for all three test methods in the fixture
+
+  - name: Fix Assert.IsInstanceOfType out parameter removal
+    prompt: |
+      After upgrading to MSTest 4.x, my tests that use Assert.IsInstanceOfType with
+      an out parameter no longer compile. I get errors like:
+      - CS1615: Argument 2 should not be passed with the 'out' keyword
+      How do I update these assertions?
+    environment:
+      files:
+        - src: fixtures/v3-instanceoftype/TestProject.csproj
+          dest: TestProject.csproj
+        - src: fixtures/v3-instanceoftype/TypeCheckTests.cs
+          dest: TypeCheckTests.cs
+    graders:
+      - type: output-matches
+        config:
+          pattern: IsInstanceOfType
+      - type: output-matches
+        config:
+          pattern: (return value|var typed|var .* = Assert)
+      - type: prompt
+      - type: pairwise
+    rubric:
+      - Identifies that Assert.IsInstanceOfType<T> no longer uses an out parameter in MSTest v4
+      - Shows the new pattern: var typed = Assert.IsInstanceOfType<T>(obj) using the return value
+      - Provides corrected code for all three test methods using IsInstanceOfType
+      - Explains the typed variable is now assigned from the return value instead of an out parameter
+
+  - name: Address TreatDiscoveryWarningsAsErrors and behavioral changes
+    prompt: |
+      I upgraded my MSTest project to v4 and the code compiles fine. But when I run
+      dotnet test, some tests that used to be discovered are now failing with discovery
+      errors. I also noticed that my [ClassInitialize] method crashes when it tries to
+      access TestContext.TestName. The project compiled cleanly — are these runtime
+      behavioral changes in v4? How do I fix them?
+    environment:
+      files:
+        - src: ./fixtures/address-treatdiscoverywarningsaserrors-and-behavioral-change/TestProject.csproj
+          dest: TestProject.csproj
+        - src: ./fixtures/address-treatdiscoverywarningsaserrors-and-behavioral-change/DiscoveryTests.cs
+          dest: DiscoveryTests.cs
+    graders:
+      - type: output-matches
+        config:
+          pattern: (TreatDiscoveryWarningsAsErrors|discovery.*(warning|error))
+      - type: output-matches
+        config:
+          pattern: (TestName|ClassInitialize|TestInitialize)
+      - type: prompt
+      - type: pairwise
+    rubric:
+      - Identifies that TreatDiscoveryWarningsAsErrors defaults to true in MSTest v4, causing previously-ignored warnings
+        to fail
+      - Recommends fixing discovery warnings or setting TreatDiscoveryWarningsAsErrors to false in .runsettings
+      - Identifies that accessing TestContext.TestName in ClassInitialize throws in v4
+      - Recommends moving TestName access to TestInitialize or individual test methods
+      - Mentions other behavioral changes the user should watch for (AppDomain, TestCase.Id, analyzer severity changes)
