@@ -114,6 +114,8 @@ run_one_eval() {
     return
   fi
 
+  echo -e "  ${BOLD}▶${NC} $EVAL_PLUGIN/$EVAL_NAME — baseline..." >&2
+
   {
     echo "=== $EVAL_PLUGIN/$EVAL_NAME ==="
 
@@ -127,6 +129,8 @@ run_one_eval() {
       --judge-model "$JUDGE_MODEL" \
       --output-dir "$BASELINE_DIR" \
       2>&1 || echo "WARNING: Baseline eval failed"
+
+    echo -e "  ${BOLD}▶${NC} $EVAL_PLUGIN/$EVAL_NAME — skilled..." >&2
 
     # Skilled
     echo "--- Skilled run ---"
