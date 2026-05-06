@@ -635,6 +635,23 @@ jobs:
           retention-days: 30
 
   # ==========================================================================
+  # VALLY EVALUATION
+  # Runs vally evaluations in parallel with skill-validator.
+  # NOTE: These results do not gate PRs for now.
+  # ==========================================================================
+  vally-evaluate:
+    needs: [gate, discover]
+    if: >-
+      always() && !cancelled() &&
+      needs.discover.outputs.has_entries == 'true' &&
+      needs.discover.result == 'success'
+    uses: ./.github/workflows/vally-evaluation.yml
+    with:
+      entries: ${{ needs.discover.outputs.entries }}
+      head_sha: ${{ needs.gate.outputs.head_sha }}
+    secrets: inherit
+
+  # ==========================================================================
   # COMMENT ON PR
   # Post consolidated evaluation results as a PR comment.
   # ==========================================================================
