@@ -141,7 +141,7 @@ jobs:
 
             # Baseline run (no skill)
             echo "--- Baseline run ---"
-            skill-validator eval \
+            vally eval \
               --eval-spec "$EVAL_SPEC" \
               --model ${{ env.MODEL }} \
               --runs 1 --workers 3 \
@@ -152,7 +152,7 @@ jobs:
 
             # Skilled run
             echo "--- Skilled run ---"
-            skill-validator eval \
+            vally eval \
               --eval-spec "$EVAL_SPEC" \
               --skill-dir "$SKILL_DIR" \
               --model ${{ env.MODEL }} \
