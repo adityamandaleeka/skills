@@ -52,10 +52,10 @@ stimuli:
         _nextId` must NOT get `?`. `DateTime? DueDate` already has `?` and must not become `DateTime??`. Check edits
         carefully for this mistake.
       - Did the agent correctly annotate methods that return null? `GetById`, `FindByTitle`, and `FindTaskByTitle` all
-        use `FirstOrDefault` which returns null � their return types must be `TaskItem?`, not `TaskItem`. Both the
+        use `FirstOrDefault` which returns null — their return types must be `TaskItem?`, not `TaskItem`. Both the
         interface `ITaskRepository` and implementation `InMemoryTaskRepository` must match.
       - Did the agent correctly handle the `_header` field in CsvExporter? It is set inside `Export()`, not the
-        constructor � it should be `string? _header` or `string _header = null!`, not left as `string _header` which
+        constructor — it should be `string? _header` or `string _header = null!`, not left as `string _header` which
         would produce CS8618.
       - Did the agent keep interface and implementation return types consistent? If `ITaskRepository.GetById` returns
         `TaskItem?`, then `InMemoryTaskRepository.GetById` must also return `TaskItem?`. Same for `FindByTitle`. Check
