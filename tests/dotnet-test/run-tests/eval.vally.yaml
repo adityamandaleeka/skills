@@ -27,7 +27,9 @@ stimuli:
       expect_tools:
         - bash
   - name: Run tests with trx reporting on MTP project (SDK 9)
-    prompt: I have an MSTest project using Microsoft.Testing.Platform. I need to run the tests and produce a TRX report. I'm
+    prompt: >
+      I have an MSTest project using Microsoft.Testing.Platform. I need to run
+      the tests and produce a TRX report. I'm on .NET SDK 9.
       on .NET SDK 9.
     environment:
       files:
@@ -56,7 +58,9 @@ stimuli:
       expect_tools:
         - bash
   - name: Run tests with blame-hang on MTP project (SDK 10)
-    prompt: My tests are occasionally hanging. I want to run them with a hang timeout of 5 minutes to detect the culprit.
+    prompt: >
+      My tests are occasionally hanging. I want to run them with dotnet test using
+      a hang timeout of 5 minutes to detect the culprit. Here's my project.
       Here's my project.
     environment:
       files:
@@ -88,7 +92,9 @@ stimuli:
       expect_tools:
         - bash
   - name: Run tests in a multi-TFM project targeting a specific framework
-    prompt: This test project targets both net8.0 and net9.0. I only want to run the tests on net9.0.
+    prompt: >
+      This test project targets both net8.0 and net9.0. I only want to run the
+      tests on net9.0 using dotnet test.
     environment:
       files:
         - src: fixtures/multi-tfm/TestProject.csproj
@@ -111,7 +117,9 @@ stimuli:
       expect_tools:
         - bash
   - name: Filter MSTest tests by category on VSTest
-    prompt: I only want to run the integration tests in this project. How do I filter for just the Integration category?
+    prompt: >
+      I only want to run the integration tests using dotnet test. How do I filter
+      by the Integration category?
     environment:
       files:
         - src: fixtures/vstest-mstest/TestProject.csproj
@@ -137,7 +145,9 @@ stimuli:
       expect_tools:
         - bash
   - name: Filter NUnit tests by class name on VSTest
-    prompt: I want to run only the ReportExporterTests class, not the ReportGeneratorTests. How?
+    prompt: >
+      I want to run only the ReportExporterTests class using dotnet test, not
+      the ReportGeneratorTests. How do I do that?
     environment:
       files:
         - src: fixtures/vstest-nunit/TestProject.csproj
@@ -163,7 +173,9 @@ stimuli:
       expect_tools:
         - bash
   - name: Filter xUnit v3 tests by class on MTP
-    prompt: I need to run only the ShoppingCartTests class, not the InventoryServiceTests. Can you show me the command?
+    prompt: >
+      I need to run only the ShoppingCartTests class using dotnet test, not the
+      InventoryServiceTests. Can you show me the command?
     environment:
       files:
         - src: fixtures/mtp-xunit-v3/TestProject.csproj
@@ -191,7 +203,9 @@ stimuli:
       expect_tools:
         - bash
   - name: Filter xUnit v3 tests by trait on MTP
-    prompt: I want to run only the tests with the Category=Integration trait in this xUnit project.
+    prompt: >
+      I want to run only the tests with the Category=Integration trait in this
+      xUnit project using dotnet test.
     environment:
       files:
         - src: fixtures/mtp-xunit-v3/TestProject.csproj
@@ -219,7 +233,9 @@ stimuli:
       expect_tools:
         - bash
   - name: Filter TUnit tests by class using treenode-filter
-    prompt: I want to run only the SmsNotificationTests from this TUnit project. What's the command?
+    prompt: >
+      I want to run only the SmsNotificationTests from this TUnit project using
+      dotnet test. What's the command?
     environment:
       files:
         - src: fixtures/mtp-tunit/TestProject.csproj
@@ -246,7 +262,9 @@ stimuli:
       expect_tools:
         - bash
   - name: Combine multiple filter criteria on VSTest MSTest
-    prompt: I want to run only the unit tests in the OrderServiceTests class. How do I combine these two conditions?
+    prompt: >
+      I want to run only the unit tests in the OrderServiceTests class using
+      dotnet test. How do I combine these two filter conditions?
     environment:
       files:
         - src: fixtures/vstest-mstest/TestProject.csproj
@@ -278,7 +296,9 @@ stimuli:
       expect_tools:
         - bash
   - name: MTP project on SDK 9 must use -- separator for args
-    prompt: I want to run these tests and collect a crash dump if any test crashes the host.
+    prompt: >
+      I want to run these tests with dotnet test and collect a crash dump if any
+      test crashes the host.
     environment:
       files:
         - src: fixtures/mtp-mstest-sdk9/TestProject.csproj
@@ -306,7 +326,7 @@ stimuli:
       expect_tools:
         - bash
   - name: MTP project on SDK 10 passes args directly
-    prompt: I want to run these tests and produce a TRX report.
+    prompt: I want to run these tests with dotnet test and produce a TRX report.
     environment:
       files:
         - src: fixtures/mtp-mstest-sdk10/TestProject.csproj
@@ -337,7 +357,9 @@ stimuli:
       expect_tools:
         - bash
   - name: Detect test platform from Directory.Build.props
-    prompt: I want to run the integration tests in this project. Can you figure out which test platform it uses and run them?
+    prompt: >
+      I want to run the integration tests in this project with dotnet test. Can
+      you figure out which test platform it uses and run them?
     environment:
       files:
         - src: ./fixtures/detect-test-platform-from-directory-build-props/TestProject.csproj
@@ -371,7 +393,7 @@ stimuli:
       expect_tools:
         - bash
   - name: "Negative test: do not use MTP syntax for a VSTest project"
-    prompt: Run my tests and generate a TRX report.
+    prompt: Run my tests with dotnet test and generate a TRX report.
     environment:
       files:
         - src: fixtures/vstest-mstest/TestProject.csproj

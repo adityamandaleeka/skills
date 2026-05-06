@@ -84,7 +84,7 @@ const GRADER_TYPE_MAP = {
   "file-matches": "file_matches",
   "file-not-matches": "file_not_matches",
   "exit-success": "exit_success",
-  completed: "completed",
+  "completed": "completed",
   "run-command": "run_command_and_assert",
   "tool-calls": "expect_tools",
   "skill-invocation": "skill_invocation",
