@@ -98,7 +98,8 @@ jobs:
           $hasInfraChanges = $changedFiles |
             Where-Object {
               ($_ -match '^eng/skill-validator/' -and $_ -notmatch '^eng/skill-validator/src/(README\.md|docs/)') -or
-              $_ -match '^\.github/workflows/evaluation\.yml$'
+              ($_ -match '^eng/vally-adapter/') -or
+              $_ -match '^\.github/workflows/(evaluation|vally-evaluation)\.yml$'
             } |
             Select-Object -First 1
 
@@ -162,7 +163,8 @@ jobs:
           $hasInfraChanges = $changedFiles |
             Where-Object {
               ($_ -match '^eng/skill-validator/' -and $_ -notmatch '^eng/skill-validator/src/(README\.md|docs/)') -or
-              $_ -match '^\.github/workflows/evaluation\.yml$'
+              ($_ -match '^eng/vally-adapter/') -or
+              $_ -match '^\.github/workflows/(evaluation|vally-evaluation)\.yml$'
             } |
             Select-Object -First 1
 
@@ -360,7 +362,8 @@ jobs:
             $hasInfraChanges = $changedFiles |
               Where-Object {
                 ($_ -match '^eng/skill-validator/' -and $_ -notmatch '^eng/skill-validator/src/(README\.md|docs/)') -or
-                $_ -match '^\.github/workflows/evaluation\.yml$'
+                ($_ -match '^eng/vally-adapter/') -or
+                $_ -match '^\.github/workflows/(evaluation|vally-evaluation)\.yml$'
               } |
               Select-Object -First 1
 
