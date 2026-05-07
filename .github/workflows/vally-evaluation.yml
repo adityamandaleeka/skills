@@ -162,9 +162,9 @@ jobs:
               --output-dir "$SKILLED_DIR" \
               2>&1 || echo "::warning::Skilled eval failed for $EVAL_NAME"
 
-            # Adapt results — find JSONL in timestamped subdirs
-            BASELINE_JSONL=$(find "$BASELINE_DIR" -name "*.jsonl" -type f 2>/dev/null | head -1)
-            SKILLED_JSONL=$(find "$SKILLED_DIR" -name "*.jsonl" -type f 2>/dev/null | head -1)
+            # Adapt results — find JSONL in timestamped subdirs (sort for latest)
+            BASELINE_JSONL=$(find "$BASELINE_DIR" -name "*.jsonl" -type f 2>/dev/null | sort | tail -1)
+            SKILLED_JSONL=$(find "$SKILLED_DIR" -name "*.jsonl" -type f 2>/dev/null | sort | tail -1)
 
             if [ -n "$BASELINE_JSONL" ] && [ -n "$SKILLED_JSONL" ]; then
               echo "--- Adapting results ---"
@@ -195,34 +195,16 @@ jobs:
       - name: Write summary
         if: always() && steps.find-evals.outputs.has_evals == 'true'
         run: |
-          echo "## 🔬 Vally Shadow Results: ${{ matrix.entry.name }}" >> $GITHUB_STEP_SUMMARY
+          echo "## 🔬 Vally Results: ${{ matrix.entry.name }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
           RESULTS_DIR="artifacts/TestResults/vally/${{ matrix.entry.name }}"
-          for RESULTS_JSON in "$RESULTS_DIR"/*/results.json; do
-            if [ ! -f "$RESULTS_JSON" ]; then continue; fi
-            EVAL_NAME=$(basename $(dirname "$RESULTS_JSON"))
 
-            # Extract verdict from JSON
-            PASSED=$(node -e "const r=JSON.parse(require('fs').readFileSync('$RESULTS_JSON','utf-8')); console.log(r.verdicts[0].passed)")
-            REASON=$(node -e "const r=JSON.parse(require('fs').readFileSync('$RESULTS_JSON','utf-8')); console.log(r.verdicts[0].reason)")
-            ICON=$([ "$PASSED" = "true" ] && echo "✅" || echo "❌")
+          for EVAL_DIR in "$RESULTS_DIR"/*/; do
+            [ ! -d "$EVAL_DIR" ] && continue
+            EVAL_NAME=$(basename "$EVAL_DIR")
 
-            echo "### $ICON $EVAL_NAME" >> $GITHUB_STEP_SUMMARY
-            echo "$REASON" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-
-            # Per-scenario table
-            echo "| Scenario | Assertions | Improvement |" >> $GITHUB_STEP_SUMMARY
-            echo "|----------|------------|-------------|" >> $GITHUB_STEP_SUMMARY
-            node -e "
-              const r = JSON.parse(require('fs').readFileSync('$RESULTS_JSON', 'utf-8'));
-              for (const s of r.verdicts[0].scenarios) {
-                const allPass = s.withSkill.metrics.assertionResults.every(a => a.passed);
-                const icon = allPass ? '✔' : '✘';
-                const pct = (s.improvementScore * 100).toFixed(1);
-                console.log('| ' + icon + ' ' + s.scenarioName + ' | ' + s.withSkill.metrics.assertionResults.length + ' passed | ' + pct + '% |');
-              }
-            " >> $GITHUB_STEP_SUMMARY
+            echo "### $EVAL_NAME" >> $GITHUB_STEP_SUMMARY
+            node eng/vally-adapter/compare-summary.mjs "$EVAL_DIR" >> $GITHUB_STEP_SUMMARY || echo "⚠️ No comparison data available" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
           done
